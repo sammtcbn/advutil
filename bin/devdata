@@ -1,0 +1,30 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2018.10.12
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [dev id]"
+    echo "    - ip use default 127.0.0.1"
+    echo "  ${ME} [ip] [dev id]"
+    exit 1
+}
+
+IP=127.0.0.1
+PORT=3000
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+if [ ! -z "${2}" ]; then
+    IP=${1}
+    DEVID=${2}
+else
+    DEVID=${1} 
+fi
+
+CMD="curl -s http://${IP}:${PORT}/restapi/WSNManage/SenHub/${DEVID}/SenHub | python -m json.tool"
+echo ${CMD}
+eval ${CMD}
