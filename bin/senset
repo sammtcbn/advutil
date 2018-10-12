@@ -1,0 +1,38 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2018.10.12
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [dev id]"
+    echo "    - ip use default 127.0.0.1"
+    echo "  ${ME} [ip] [dev id] [sensor name] [value]"
+    echo "Ex:"
+    echo "  ${ME} 0017000E8C000052 GPIO1 1"
+    echo "  ${ME} 0017000E8C000052 GPIO2 0"
+    echo "  ${ME} 0017000E8C000052 Relay1 1"
+    exit 1
+}
+
+IP=127.0.0.1
+PORT=3000
+SENSOR_NAME=GPIO1
+SENSOR_VAL=0
+
+if [ ! -z "${4}" ]; then
+    IP=${1}
+    DEVID=${2}
+    SENSOR_NAME=${3}
+    SENSOR_VAL=${4}
+elif [ ! -z "${3}" ]; then
+    DEVID=${1}
+    SENSOR_NAME=${2}
+    SENSOR_VAL=${3}
+else
+    usage
+fi
+
+CMD="curl -X PUT -H \"Content-Type: application/json\" -d '{\"bv\":${SENSOR_VAL}}' http://${IP}:${PORT}/restapi/WSNManage/SenHub/${DEVID}/SenHub/SenData/${SENSOR_NAME}"
+echo ${CMD}
+eval ${CMD}

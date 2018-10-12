@@ -1,0 +1,41 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2018.10.12
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [dev id]"
+    echo "    - ip use default 127.0.0.1"
+    echo "  ${ME} [ip] [dev id] [sensor name]"
+    echo "Ex:"
+    echo "  ${ME} 0017000E8C000052 Temperature"
+    echo "  ${ME} 0017000E8C000052 Humidity"
+    echo "  ${ME} 0017000E8C000052 ADC"
+    echo "  ${ME} 0017000E8C000052 GPIO1"
+    echo "  ${ME} 0017000E8C000052 Relay2"
+    echo "  ${ME} 0017000E8C000052 Input3"
+    echo "  ${ME} 0017000E8C000052 SNR"
+    echo "  ${ME} 0017000E8C000052 RSSI"
+    exit 1
+}
+
+IP=127.0.0.1
+PORT=3000
+SENSOR_NAME=Temperature
+SENSOR_VAL=0
+
+if [ ! -z "${3}" ]; then
+    IP=${1}
+    DEVID=${2}
+    SENSOR_NAME=${3}
+elif [ ! -z "${2}" ]; then
+    DEVID=${1}
+    SENSOR_NAME=${2}
+else
+    usage
+fi
+
+CMD="curl -s http://${IP}:${PORT}/restapi/WSNManage/SenHub/${DEVID}/SenHub/SenData/${SENSOR_NAME} | python -m json.tool"
+echo ${CMD}
+eval ${CMD}
