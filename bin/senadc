@@ -22,9 +22,9 @@ if [ ! -z "${2}" ]; then
     IP=${1}
     DEVID=${2}
 else
-    DEVID=${1}
+    DEVID=${1} 
 fi
 
-CMD="curl -s http://${IP}:${PORT}/restapi/WSNManage/SenHub/${DEVID} | python -m json.tool"
+CMD="curl -s http://${IP}:${PORT}/restapi/WSNManage/SenHub/${DEVID}/SenHub/SenData/ADC | python -m json.tool"
 echo ${CMD}
 eval ${CMD}
