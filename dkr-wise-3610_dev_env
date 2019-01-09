@@ -1,0 +1,6 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2019.1.9
+docker run -it --name lora_sdk -v $PWD:/home/adv/work/ advwiseec/lorasdk_openwrt bash
+
+# Then, cd /home/adv/work
