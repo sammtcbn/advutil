@@ -1,0 +1,4 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Last modified by sammtcbn 2019.1.10
+sudo systemctl restart LoRaMgt_ryx.service
