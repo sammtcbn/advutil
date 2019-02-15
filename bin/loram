@@ -9,6 +9,7 @@ function usage() {
     echo "    0/stop - stop LoRaMgt_ryx service"
     echo "    1/rs   - restart LoRaMgt_ryx service"
     echo "    2/st   - LoRaMgt_ryx service status"
+    echo "    3/log  - show LoRaMgt_ryx log"
     exit 1
 }
 
@@ -29,6 +30,7 @@ case $opt in
     0) ;&
     stop)
         sudo systemctl stop LoRaMgt_ryx.service
+        sudo killall LoRaMgt_ryx
         show_ps
         ;;
     1) ;&
@@ -41,4 +43,8 @@ case $opt in
         show_ps
         sudo systemctl status LoRaMgt_ryx.service
         ;;
+    3) ;&
+    log)
+       cat /var/log/syslog | grep -a LoRaMgt_ryx
+       ;;
 esac

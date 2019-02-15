@@ -9,6 +9,7 @@ function usage() {
     echo "    0/stop - stop uartmgr service"
     echo "    1/rs   - restart uartmgr service"
     echo "    2/st   - uartmgr service status"
+    echo "    3/log  - show uartmgr log"
     exit 1
 }
 
@@ -40,5 +41,9 @@ case $opt in
     st)
         show_ps
         sudo systemctl status uartmgr.service
+        ;;
+    3) ;&
+    log)
+        cat /var/log/syslog | grep -a uartmgr
         ;;
 esac
