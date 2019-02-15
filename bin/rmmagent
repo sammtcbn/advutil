@@ -1,0 +1,56 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Last modified by sammtcbn 2019.2.15
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [option]"
+    echo "    0/stop  - stop rmm agent service"
+    echo "    1/rs    - restart rmm agent service"
+    echo "    2/st   - agent service status"
+    echo "    9/devid - show device id from rmm agent"
+    exit 1
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+opt=${1}
+
+case $opt in
+    0) ;&
+    stop)
+        sudo systemctl stop sawatchdog.service; sudo systemctl stop saagent.service
+        sudo killall cagent
+        sudo killall -9 cagent
+        echo
+        echo "ps -aux | grep cagent"
+        ps -aux | grep [c]agent
+        ;;
+    1) ;&
+    agentrs)
+        sudo systemctl restart saagent.service
+        echo
+        echo "ps -aux | grep cagent"
+        ps -aux | grep [c]agent
+        ;;
+    2) ;&
+    st)
+        echo "ps -aux | grep cagent"
+        ps -aux | grep [c]agent
+        echo
+        echo "sudo systemctl status saagent.service"
+        sudo systemctl status saagent.service
+        ;;
+    9) ;&
+    devid)
+        config=/usr/local/AgentService/agent_config.xml
+        if [ ! -f ${config} ]; then
+            echo "${config} not found"
+        else
+            sed -n 's:.*<\DevID>\(.*\)</DevID.*:\1:p' ${config}
+        fi
+        ;;
+esac
