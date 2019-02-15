@@ -8,9 +8,16 @@ function usage() {
     echo "  ${ME} [option]"
     echo "    0/stop  - stop rmm agent service"
     echo "    1/rs    - restart rmm agent service"
-    echo "    2/st   - agent service status"
+    echo "    2/st    - agent service status"
     echo "    9/devid - show device id from rmm agent"
     exit 1
+}
+
+function show_ps() {
+    echo
+    echo "ps -aux | grep cagent"
+    ps -aux | grep [c]agent
+    echo
 }
 
 if [ -z "${1}" ]; then
@@ -25,23 +32,16 @@ case $opt in
         sudo systemctl stop sawatchdog.service; sudo systemctl stop saagent.service
         sudo killall cagent
         sudo killall -9 cagent
-        echo
-        echo "ps -aux | grep cagent"
-        ps -aux | grep [c]agent
+        show_ps
         ;;
     1) ;&
-    agentrs)
+    rs)
         sudo systemctl restart saagent.service
-        echo
-        echo "ps -aux | grep cagent"
-        ps -aux | grep [c]agent
+        show_ps
         ;;
     2) ;&
     st)
-        echo "ps -aux | grep cagent"
-        ps -aux | grep [c]agent
-        echo
-        echo "sudo systemctl status saagent.service"
+        show_ps
         sudo systemctl status saagent.service
         ;;
     9) ;&
