@@ -1,0 +1,44 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Last modified by sammtcbn 2019.2.15
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [option]"
+    echo "    0/stop - stop LoRaMgt_ryx service"
+    echo "    1/rs   - restart LoRaMgt_ryx service"
+    echo "    2/st   - LoRaMgt_ryx service status"
+    exit 1
+}
+
+function show_ps() {
+    echo
+    echo "ps -aux | grep LoRaMgt_ryx"
+    ps -aux | grep [L]oRaMgt_ryx 
+    echo
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+opt=${1}
+
+case $opt in
+    0) ;&
+    stop)
+        sudo systemctl stop LoRaMgt_ryx.service
+        show_ps
+        ;;
+    1) ;&
+    rs)
+        sudo systemctl restart LoRaMgt_ryx.service
+        show_ps
+        ;;
+    2) ;&
+    st)
+        show_ps
+        sudo systemctl status LoRaMgt_ryx.service
+        ;;
+esac
