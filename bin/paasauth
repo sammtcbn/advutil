@@ -1,0 +1,31 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Last modified by sammtcbn 2019.2.19
+ME=$(basename $0)
+
+function usage() {
+    echo "Usage:"
+    echo "  ${ME} [IoT Key]"
+    exit 1
+}
+
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+key=${1}
+
+cd /usr/local/AgentService/ || exit 1
+OUTPUT=$(./CredentialChecker https://api-dccs.wise-paas.com/v1/serviceCredentials/${key})
+
+username=$(echo ${OUTPUT} | awk -F "," '{print $2}')
+password=$(echo ${OUTPUT} | awk -F "," '{print $3}')
+serverip=$(echo ${OUTPUT} | awk -F "," '{print $4}')
+serverport=$(echo ${OUTPUT} | awk -F "," '{print $5}')
+echo
+echo "user name   = $username"
+echo "password    = $password"
+echo "server ip   = $serverip"
+echo "server port = $serverport"
+echo
