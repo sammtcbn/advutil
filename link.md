@@ -10,9 +10,6 @@ http://ess-wiki.advantech.com.tw/view/Uartmgr
 SNMP-NMS  
 http://ess-wiki.advantech.com.tw/view/SNMP-NMS
 
-ELog  
-http://ess-wiki.advantech.com.tw/view/ELog
-
 ---
 
 Deploy Tensorflow to K8S  
@@ -114,8 +111,31 @@ http://ess-wiki.advantech.com.tw/view/Edge_Sense_Knowledge_Sharing
 EdgeSense Open Source  
 http://ess-wiki.advantech.com.tw/view/EdgeSense_Open_Source
 
+ELog  
+http://ess-wiki.advantech.com.tw/view/ELog
+
+Node.js application as Windows service  
+http://ess-wiki.advantech.com.tw/view/Node.js_application_as_Windows_service
+
 NodeRED for EdgeSense  
 http://ess-wiki.advantech.com.tw/view/NodeRED_for_EdgeSense
+
+---
+
+AlarmEvent  
+http://ess-wiki.advantech.com.tw/view/AlarmEvent
+
+Configuration Tool  
+http://ess-wiki.advantech.com.tw/view/Configuration_Tool
+
+Modbus Handler v1.0  
+http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
+
+ODBC Service  
+http://ess-wiki.advantech.com.tw/view/ODBC_Service
+
+WASCADA Service  
+http://ess-wiki.advantech.com.tw/view/WASCADA_Service
 
 ---
 
@@ -164,9 +184,6 @@ http://ess-wiki.advantech.com.tw/view/IoTGateway/WiseSnail
 MCU/WISE-1520 SDK  
 http://ess-wiki.advantech.com.tw/view/MCU/WISE-1520_SDK
 
-Modbus Handler v1.0  
-http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
-
 PMQ Framework  
 http://ess-wiki.advantech.com.tw/view/PMQ_Framework
 
@@ -199,8 +216,3 @@ http://ess-wiki.advantech.com.tw/wiki/images/9/97/WISE-PaaS_RMM_3.2_Server_UM_V1
 
 WISE-PaaS/RMM Agent  
 http://ess-wiki.advantech.com.tw/view/WISE-PaaS/RMM_Agent
-
----
-
-Node.js application as Windows service  
-http://ess-wiki.advantech.com.tw/view/Node.js_application_as_Windows_service
