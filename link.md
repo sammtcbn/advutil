@@ -128,6 +128,9 @@ http://ess-wiki.advantech.com.tw/view/AlarmEvent
 Configuration Tool  
 http://ess-wiki.advantech.com.tw/view/Configuration_Tool
 
+EnOcean Link Solution  
+http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution
+
 Modbus Handler v1.0  
 http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
 
