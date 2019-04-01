@@ -1,7 +1,7 @@
 ePack  
 http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ePack
 
-ReyaxSol 
+ReyaxSol  
 http://advgitlab.eastasia.cloudapp.azure.com/EdgeSense/ReyaxSol
 
 uartmgr  
