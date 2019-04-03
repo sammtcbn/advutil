@@ -184,6 +184,9 @@ http://ess-wiki.advantech.com.tw/view/IoTGateway/DataProcess
 IoTGateway/WiseSnail  
 http://ess-wiki.advantech.com.tw/view/IoTGateway/WiseSnail
 
+Local Provision  
+http://ess-wiki.advantech.com.tw/view/Local_Provision
+
 MCU/WISE-1520 SDK  
 http://ess-wiki.advantech.com.tw/view/MCU/WISE-1520_SDK
 
