@@ -1,0 +1,26 @@
+#!/bin/bash
+# A command line script to query sensor value via simplejson
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2019.5.2
+
+url="http://168.63.200.38/rmm/v1/grafana/simplejson/query"
+auth="user:1234"
+
+devid="00000001-0000-0000-0017-000005001662"
+starttime="2019-05-02T06:19:00.000Z"
+endtime="2019-05-02T06:19:11.999Z"
+plugin="SenHub"
+sensor="/SenData/Light1"
+#target="00000001-0000-0000-0017-000005001662|SenHub|/SenData/Light1"
+target="${devid}|${plugin}|${sensor}"
+
+body="$(cat <<-EOF
+{"timezone":"browser","panelId":2,"range":{"from":"${starttime}","to":"${endtime}","raw":{"from":"now-6h","to":"now"}},"rangeRaw":{"from":"now-6h","to":"now"},"interval":"20s","intervalMs":20000,"targets":[{"target":"${target}","device":"${devid}","plugin":"${plugin}","sensor":"${sensor}","refId":"A","type":"table"}],"maxDataPoints":960,"scopedVars":{"__interval":{"text":"20s","value":"20s"},"__interval_ms":{"text":20000,"value":20000}}}
+
+EOF
+)"
+
+header="Content-Type: application/json"
+
+curl -s --user $auth -X POST -H $header -d $body $url | python -m json.tool
+
