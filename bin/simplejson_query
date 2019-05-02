@@ -22,5 +22,8 @@ EOF
 
 header="Content-Type: application/json"
 
+# method-1
 curl -s --user $auth -X POST -H $header -d $body $url | python -m json.tool
 
+#method-2 : use json_pp
+#curl -s --user $auth -X POST -H $header -d $body $url | json_pp
