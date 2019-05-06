@@ -4,6 +4,9 @@ http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution
 Edge Sense LoRa GW Solution internal  
 http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution_internal
 
+OPC-UA Client Linux  
+http://ess-wiki.advantech.com.tw/view/OPC-UA_Client_Linux
+
 Uartmgr  
 http://ess-wiki.advantech.com.tw/view/Uartmgr
 
