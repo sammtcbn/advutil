@@ -123,6 +123,9 @@ http://ess-wiki.advantech.com.tw/view/Node.js_application_as_Windows_service
 NodeRED for EdgeSense  
 http://ess-wiki.advantech.com.tw/view/NodeRED_for_EdgeSense
 
+POC-Battery  
+http://ess-wiki.advantech.com.tw/view/POC-Battery
+
 ---
 
 AlarmEvent  
@@ -225,3 +228,7 @@ http://ess-wiki.advantech.com.tw/wiki/images/9/97/WISE-PaaS_RMM_3.2_Server_UM_V1
 
 WISE-PaaS/RMM Agent  
 http://ess-wiki.advantech.com.tw/view/WISE-PaaS/RMM_Agent
+
+---
+Microsoft SQL Server  
+http://ess-wiki.advantech.com.tw/view/Microsoft_SQL_Server
