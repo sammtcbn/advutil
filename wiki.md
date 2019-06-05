@@ -230,6 +230,9 @@ WISE-PaaS/RMM Agent
 http://ess-wiki.advantech.com.tw/view/WISE-PaaS/RMM_Agent
 
 ---
+AdvancedInstaller  
+http://ess-wiki.advantech.com.tw/view/AdvancedInstaller
+
 Microsoft SQL Server  
 http://ess-wiki.advantech.com.tw/view/Microsoft_SQL_Server
 
