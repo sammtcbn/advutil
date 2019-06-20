@@ -233,6 +233,9 @@ http://ess-wiki.advantech.com.tw/view/WISE-PaaS/RMM_Agent
 AdvancedInstaller  
 http://ess-wiki.advantech.com.tw/view/AdvancedInstaller
 
+Electron Notes  
+http://ess-wiki.advantech.com.tw/view/Electron_Notes
+
 Microsoft SQL Server  
 http://ess-wiki.advantech.com.tw/view/Microsoft_SQL_Server
 
