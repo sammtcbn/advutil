@@ -1,0 +1,37 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2019.7.9
+
+IP=
+ID=
+PW=
+TOPIC=#
+
+function usage()
+{
+    echo "Usage: $0 [TOPIC]"
+    echo "   TOPIC: default is #"
+    exit 0
+}
+
+function loadcfg() {
+    CFGFILE=~/.advpaasdev
+    if [ -f ${CFGFILE} ]; then
+        IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
+        ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        PW=`cat ${CFGFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+    fi
+}
+
+loadcfg
+
+if [ ! -z "${1}" ]; then
+    TOPIC=${1}
+fi
+
+#echo IP = ${IP}
+#echo ID = ${ID}
+#echo PW = ${PW}
+#echo TOPIC = ${TOPIC}
+
+mqtt-show-msg --topic=${TOPIC} --ip=${IP} --username=${ID} --password=${PW}
