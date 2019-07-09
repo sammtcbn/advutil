@@ -151,6 +151,9 @@ http://ess-wiki.advantech.com.tw/view/WASCADA_Service
 AgentLite-Node.js  
 http://ess-wiki.advantech.com.tw/view/AgentLite-Node.js
 
+Build Southbound service with Feature-Plugin  
+http://ess-wiki.advantech.com.tw/view/Build_Southbound_service_with_Feature-Plugin
+
 Connectivity/AdvHeartBeat  
 http://ess-wiki.advantech.com.tw/view/Connectivity/AdvHeartBeat
 
@@ -232,6 +235,9 @@ http://ess-wiki.advantech.com.tw/view/WISE-PaaS/RMM_Agent
 ---
 AdvancedInstaller  
 http://ess-wiki.advantech.com.tw/view/AdvancedInstaller
+
+EdgeSense Coding Style and Rule  
+http://ess-wiki.advantech.com.tw/view/EdgeSense_Coding_Style_and_Rule
 
 Electron Notes  
 http://ess-wiki.advantech.com.tw/view/Electron_Notes
