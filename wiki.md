@@ -140,6 +140,9 @@ http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution
 Modbus Handler v1.0  
 http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
 
+Modbus Service  
+http://ess-wiki.advantech.com.tw/view/Modbus_Service
+
 ODBC Service  
 http://ess-wiki.advantech.com.tw/view/ODBC_Service
 
