@@ -166,6 +166,9 @@ http://ess-wiki.advantech.com.tw/view/Connectivity/Agent_Communication_Protocol_
 Data Flow  
 http://ess-wiki.advantech.com.tw/view/Data_Flow
 
+EdgeSense Southbound Service Development  
+http://ess-wiki.advantech.com.tw/view/EdgeSense_Southbound_Service_Development
+
 Edge Services  
 http://ess-wiki.advantech.com.tw/view/Edge_Services
 
