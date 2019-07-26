@@ -193,6 +193,9 @@ http://ess-wiki.advantech.com.tw/view/EIS_RESTfulAPI_ProcWSNData
 EIS Service Protocol  
 http://ess-wiki.advantech.com.tw/view/EIS_Service_Protocol
 
+How to Develop Customized Plugin Step by Step  
+http://advgitlab.eastasia.cloudapp.azure.com/WISE-PaaS-Documentation/Documentation/blob/master/documents/RMM/Agent/123-plugin.md
+
 IoTGateway/DataProcess  
 http://ess-wiki.advantech.com.tw/view/IoTGateway/DataProcess
 
