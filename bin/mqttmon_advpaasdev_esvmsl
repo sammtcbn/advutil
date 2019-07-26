@@ -1,5 +1,0 @@
-#!/bin/bash
-# https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.7.9
-DEVICEID=00000001-0000-0000-0000-5254004BAD5F
-mqttmon_advpaasdev "/wisepaas/+/${DEVICEID}/#"

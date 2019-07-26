@@ -1,4 +1,0 @@
-#!/bin/bash
-# https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.7.9
-mqtt-show-msg --topic="#" --ip=PC041007

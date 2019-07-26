@@ -1,0 +1,113 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2019.7.26
+
+function usage()
+{
+    ME=$(basename $0)
+    echo "Usage: ${ME} [-f ip] [-d devid]"
+    exit 0
+}
+
+function load_advpaasdev() {
+    CFGFILE=~/.advpaasdev
+    if [ -f ${CFGFILE} ]; then
+        IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
+        ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        PW=`cat ${CFGFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+    fi
+}
+
+function reset()
+{
+    IP=localhost
+    ID=
+    PW=
+    devid=
+    bound=0
+    topic=#
+}
+
+function cal_topic()
+{
+    if [ -z "${devid}" ]; then
+        topic=#
+        return
+    fi
+
+    if [ "${bound}" == "s" ]; then
+        topic="/cagent/admin/${devid}/#"
+    elif [ "${bound}" == "n" ]; then
+        topic="/wisepaas/+/${devid}/#"
+    fi
+}
+
+function showmenu()
+{
+    clear
+    echo "broker ip = ${IP}"
+    echo "broker id = ${ID}"
+    echo "broker pw = ${PW}"
+    echo "devid     = ${devid}"
+    echo "bound     = ${bound}"
+    echo "topic     = ${topic}"
+    echo ""
+    echo "8) load broker setting from advpaasdev"
+    echo "b) assign bound"
+    echo "d) assign devid"
+    echo "i) assign ip"
+    echo "j) assign ip/devid for pc041007"
+    echo "r) reset"
+    echo "g) go"
+    echo "q) quit"
+    read -p "Choose: " choice
+}
+
+reset
+
+while getopts "i:d:" opt; do
+    case $opt in
+    i)
+       IP=$OPTARG
+       ;;
+    d)
+       devid=$OPTARG
+       ;;
+    esac
+done
+
+while :
+do
+    cal_topic
+    showmenu
+    case $choice in
+        8)
+            load_advpaasdev
+            ;;
+        b)
+           read -p "New bound [0/s/n] " bound
+           ;;
+        d)
+           read -p "New devid: " devid
+           ;;
+        i)
+           read -p "New IP: " IP
+           ;;
+        j)
+           IP=pc041007
+           devid=00000001-0000-0000-0000-305A3A750CCA
+           ;;
+        g)
+           break
+           ;;
+        q)
+            exit 0
+            ;;
+        r)
+            reset
+            ;;
+    esac
+done
+
+cal_topic
+mqtt-show-msg --topic=${topic} --ip=${IP} --username=${ID} --password=${PW}
