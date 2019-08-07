@@ -56,7 +56,8 @@ function showmenu()
     echo "b) assign bound"
     echo "d) assign devid"
     echo "i) assign ip"
-    echo "j) assign ip/devid for pc041007"
+    echo "j) assign ip for esvmsl"
+    echo "k) assign ip/devid for pc041007"
     echo "r) reset"
     echo "g) go"
     echo "q) quit"
@@ -94,6 +95,9 @@ do
            read -p "New IP: " IP
            ;;
         j)
+           IP=esvmsl
+           ;;
+        k)
            IP=pc041007
            devid=00000001-0000-0000-0000-305A3A750CCA
            ;;
