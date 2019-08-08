@@ -146,6 +146,9 @@ http://ess-wiki.advantech.com.tw/view/Modbus_Service
 ODBC Service  
 http://ess-wiki.advantech.com.tw/view/ODBC_Service
 
+ODBC Service internal  
+http://ess-wiki.advantech.com.tw/view/ODBC_Service_internal
+
 WASCADA Service  
 http://ess-wiki.advantech.com.tw/view/WASCADA_Service
 
