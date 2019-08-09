@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.7.26
+# Written by sammtcbn 2019.8.10
 
 function usage()
 {
@@ -10,7 +10,7 @@ function usage()
 }
 
 function load_advpaasdev() {
-    CFGFILE=~/.advpaasdev
+    CFGFILE=~/.config/.advpaasdev
     if [ -f ${CFGFILE} ]; then
         IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
         ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
