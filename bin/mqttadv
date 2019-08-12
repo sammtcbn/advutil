@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.8.10
+# Written by sammtcbn 2019.8.12
 
 function usage()
 {
@@ -56,7 +56,7 @@ function showmenu()
     echo "b) assign bound"
     echo "d) assign devid"
     echo "i) assign ip"
-    echo "j) assign ip for esvmsl"
+    echo "j) assign ip/devid for esvmsl"
     echo "k) assign ip/devid for pc041007"
     echo "r) reset"
     echo "g) go"
@@ -96,6 +96,7 @@ do
            ;;
         j)
            IP=esvmsl
+           devid=00000001-0000-0000-0000-5254004BAD5F
            ;;
         k)
            IP=pc041007
