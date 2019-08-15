@@ -1,1 +1,1 @@
-@explorer.exe \\ESSVM-5\Signed\Sam35.Lin
+@explorer.exe \\ESSVM-5\Signed\%UserName%
