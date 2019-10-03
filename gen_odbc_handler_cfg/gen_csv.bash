@@ -1,7 +1,7 @@
 #!/bin/bash
 
 totalrecnum=10
-fieldnum=10
+fieldnum=255
 outputfile=data.csv
 
 # output FieldName
@@ -35,7 +35,7 @@ function gen_one_record()
     # echo time
     tsoffset=$1
     newts=$(( $ts + $tsoffset )) 
-    tsstr=$(date +'%Y/%m/%d %H:%M:%S:%3N' --date=@$newts)
+    tsstr=$(date +'%Y/%m/%d %H:%M:%S' --date=@$newts)
     echo -n "$tsstr," >> $outputfile
 
     # echo field value
