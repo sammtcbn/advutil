@@ -58,6 +58,7 @@ function showmenu()
     echo "i) assign ip"
     echo "j) assign ip/devid for esvmsl"
     echo "k) assign ip/devid for pc041007"
+    echo "l) assign ip/devid for esvm-win10"
     echo "r) reset"
     echo "g) go"
     echo "q) quit"
@@ -101,6 +102,10 @@ do
         k)
            IP=pc041007
            devid=00000001-0000-0000-0000-305A3A750CCA
+           ;;
+        l)
+           IP=esvm-win10
+           devid=00000001-0000-0000-0000-525400622D01
            ;;
         g)
            break

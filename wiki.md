@@ -247,6 +247,9 @@ http://ess-wiki.advantech.com.tw/wiki/images/9/97/WISE-PaaS_RMM_3.2_Server_UM_V1
 WISE-PaaS/RMM Agent  
 http://ess-wiki.advantech.com.tw/view/WISE-PaaS/RMM_Agent
 
+Rule Engine  
+http://ess-wiki.advantech.com.tw/view/Rule_Engine
+
 ---
 AdvancedInstaller  
 http://ess-wiki.advantech.com.tw/view/AdvancedInstaller
