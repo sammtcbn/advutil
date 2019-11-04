@@ -74,8 +74,9 @@ done
 TOPIC="/cagent/admin/${HANDLER}/eventnotify"
 TS=$(date +%s)000
 
+function old_full_payload() {
 PAYLOAD="$(cat <<-EOF
-{  
+{
   "susiCommData": {
       "commCmd": 2059,
       "requestID": 2001,
@@ -90,7 +91,22 @@ PAYLOAD="$(cat <<-EOF
             }
   }
 }
+EOF
+)"
+}
 
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+      "eventnotify": {
+            "subtype": "${SUBTYPE}",
+            "msg": "${MSG}",
+            "severity": ${SEVERITY},
+            "handler": "${HANDLER}"
+            }
+  }
+}
 EOF
 )"
 
