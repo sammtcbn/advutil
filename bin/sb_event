@@ -1,0 +1,101 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# send a event just for south-bound
+# Written by sammtcbn 2019.11.4
+ME=$(basename $0)
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -i <MQTT_IP>
+      assign MQTT Broker ip, default is localhost
+
+  -m <MESSAGE>
+      default message is test
+
+  -s <SEVERITY>
+      0: Emergency
+      1: Alert
+      2: Critical
+      3: Error
+      4: Warning
+      5: Informational (default)
+      6: Debug
+
+  -a <HANDLER>
+      default is OPCUAClient
+
+  -t <SUBTYPE>
+      THRESHOLD_CHECK_INFO
+      THRESHOLD_CHECK_ERROR
+      default is THRESHOLD_CHECK_ERROR
+
+  -h  display this help and exit
+
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+MQTTIP=localhost
+HANDLER="OPCUAClient"
+SEVERITY=5
+SUBTYPE="THRESHOLD_CHECK_ERROR"
+MSG="test"
+
+while getopts "a:i:m:s:t:h" opt; do
+    case $opt in
+    a)
+       HANDLER=$OPTARG
+       ;;
+    i)
+       MQTTIP=$OPTARG
+       ;;
+    m)
+       MSG=$OPTARG
+       ;;
+    s)
+       SEVERITY=$OPTARG
+       ;;
+    t)
+       SUBTYPE=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    esac
+done
+
+TOPIC="/cagent/admin/${HANDLER}/eventnotify"
+TS=$(date +%s)000
+
+PAYLOAD="$(cat <<-EOF
+{  
+  "susiCommData": {
+      "commCmd": 2059,
+      "requestID": 2001,
+      "agentID": "${HANDLER}",
+      "handlerName": "${HANDLER}",
+      "sendTS": ${TS},
+      "eventnotify": {
+            "subtype": "${SUBTYPE}",
+            "msg": "${MSG}",
+            "severity": ${SEVERITY},
+            "handler": "${HANDLER}"
+            }
+  }
+}
+
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    usage
+fi
