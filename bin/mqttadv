@@ -17,11 +17,11 @@ function load_favorite_ip()
 {
     CFG=~/.config/.mqttadv
     if [ -f ${CFG} ]; then
-        HOST1=`awk '{if(NR==1) print $0}' ~/.config/.mqttadv`
-        HOST2=`awk '{if(NR==2) print $0}' ~/.config/.mqttadv`
-        HOST3=`awk '{if(NR==3) print $0}' ~/.config/.mqttadv`
-        HOST4=`awk '{if(NR==4) print $0}' ~/.config/.mqttadv`
-        HOST5=`awk '{if(NR==5) print $0}' ~/.config/.mqttadv`
+        HOST1=`awk '{if(NR==1) print $0}' ${CFG}`
+        HOST2=`awk '{if(NR==2) print $0}' ${CFG}`
+        HOST3=`awk '{if(NR==3) print $0}' ${CFG}`
+        HOST4=`awk '{if(NR==4) print $0}' ${CFG}`
+        HOST5=`awk '{if(NR==5) print $0}' ${CFG}`
     fi
 }
 
