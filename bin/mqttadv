@@ -1,12 +1,28 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.8.12
+# Written by sammtcbn 2019.11.5
+
+# support 5 favorite ip , edit ~/.config/.mqttadv , content as below:
+# 172.22.12.228
+# 172.22.12.72
 
 function usage()
 {
     ME=$(basename $0)
     echo "Usage: ${ME} [-f ip] [-d devid]"
     exit 0
+}
+
+function load_favorite_ip()
+{
+    CFG=~/.config/.mqttadv
+    if [ -f ${CFG} ]; then
+        HOST1=`awk '{if(NR==1) print $0}' ~/.config/.mqttadv`
+        HOST2=`awk '{if(NR==2) print $0}' ~/.config/.mqttadv`
+        HOST3=`awk '{if(NR==3) print $0}' ~/.config/.mqttadv`
+        HOST4=`awk '{if(NR==4) print $0}' ~/.config/.mqttadv`
+        HOST5=`awk '{if(NR==5) print $0}' ~/.config/.mqttadv`
+    fi
 }
 
 function load_advpaasdev() {
@@ -59,6 +75,27 @@ function showmenu()
     echo "j) assign ip/devid for esvmsl"
     echo "k) assign ip/devid for pc041007"
     echo "l) assign ip/devid for esvm-win10"
+
+    if [ ! -z "${HOST1}" ]; then
+        echo "1) assign ip to ${HOST1}"
+    fi
+
+    if [ ! -z "${HOST2}" ]; then
+        echo "2) assign ip to ${HOST2}"
+    fi
+
+    if [ ! -z "${HOST3}" ]; then
+        echo "3) assign ip to ${HOST3}"
+    fi
+
+    if [ ! -z "${HOST4}" ]; then
+        echo "4) assign ip to ${HOST4}"
+    fi
+
+    if [ ! -z "${HOST5}" ]; then
+        echo "5) assign ip to ${HOST5}"
+    fi
+
     echo "r) reset"
     echo "g) go"
     echo "q) quit"
@@ -80,9 +117,35 @@ done
 
 while :
 do
+    load_favorite_ip
     cal_topic
     showmenu
     case $choice in
+        1)
+            if [ ! -z "${HOST1}" ]; then
+              IP=${HOST1}
+            fi
+            ;;
+        2)
+            if [ ! -z "${HOST2}" ]; then
+              IP=${HOST2}
+            fi
+            ;;
+        3)
+            if [ ! -z "${HOST3}" ]; then
+              IP=${HOST3}
+            fi
+            ;;
+        4)
+            if [ ! -z "${HOST4}" ]; then
+              IP=${HOST4}
+            fi
+            ;;
+        5)
+            if [ ! -z "${HOST5}" ]; then
+              IP=${HOST5}
+            fi
+            ;;
         8)
             load_advpaasdev
             ;;
