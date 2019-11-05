@@ -1,0 +1,97 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# send msg to iAlarm
+# Written by sammtcbn 2019.11.5
+ME=$(basename $0)
+MQTTIP=localhost
+HANDLER="iAlarm"
+SEVERITY=5
+TYPE="THRESHOLD_CHECK_ERROR"
+MSG="test"
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -i <MQTT_IP>
+      assign MQTT Broker ip, default is ${MQTTIP}
+
+  -a <HANDLER>
+      default is ${HANDLER}
+
+  -m <MESSAGE>
+      default message is ${MSG}
+
+  -s <SEVERITY>
+      0: Emergency
+      1: Alert
+      2: Critical
+      3: Error
+      4: Warning
+      5: Informational
+      6: Debug
+      default severity is ${SEVERITY}
+
+  -t <TYPE>
+      THRESHOLD_CHECK_INFO
+      THRESHOLD_CHECK_ERROR
+      default is ${TYPE}
+
+  -h  display this help and exit
+
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+while getopts "a:i:m:s:t:h" opt; do
+    case $opt in
+    a)
+       HANDLER=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    i)
+       MQTTIP=$OPTARG
+       ;;
+    m)
+       MSG=$OPTARG
+       ;;
+    s)
+       SEVERITY=$OPTARG
+       ;;
+    t)
+       TYPE=$OPTARG
+       ;;
+    esac
+done
+
+APPID=${HANDLER}
+TOPIC="/iAlarm/${APPID}/Request"
+COMMAND="trigger"
+SESSIONID=$(dbus-uuidgen)
+
+PAYLOAD="$(cat <<-EOF
+{ 
+  "Command": "${COMMAND}",
+  "SessionID": "${SESSIONID}",
+  "Params":{
+      "name": "${HANDLER}",
+      "type": "${TYPE}",
+      "msg": "${MSG}",
+      "severity": ${SEVERITY}
+  }       
+}
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    usage
+fi
