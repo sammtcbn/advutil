@@ -1,0 +1,74 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# connect , just for south-bound
+# Written by sammtcbn 2019.11.5
+ME=$(basename $0)
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -i <MQTT_IP>
+      assign MQTT Broker ip, default is localhost
+
+  -a <HANDLER>
+      default is OPCUAClient
+
+  -h  display this help and exit
+
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+MQTTIP=localhost
+HANDLER="OPCUAClient"
+
+while getopts "a:i:h" opt; do
+    case $opt in
+    a)
+       HANDLER=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    i)
+       MQTTIP=$OPTARG
+       ;;
+    esac
+done
+
+TOPIC="/cagent/admin/${HANDLER}/agentinfoack"
+TS=$(date +%s)000
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "devID": "${HANDLER}",
+    "hostname": "${HANDLER}",
+    "sn": "",
+    "mac": "",
+    "version": "v1.0.1",
+    "type": "Service",
+    "product": "${HANDLER}",
+    "manufacture": "Advantech",
+    "status": 0,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    usage
+fi
