@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# disconnect , just for south-bound
+# will message , just for south-bound
 # Written by sammtcbn 2019.11.5
 ME=$(basename $0)
 
