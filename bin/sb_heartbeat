@@ -1,0 +1,60 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# heartbeat , just for south-bound
+# Written by sammtcbn 2019.11.5
+ME=$(basename $0)
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -i <MQTT_IP>
+      assign MQTT Broker ip, default is localhost
+
+  -a <HANDLER>
+      default is OPCUAClient
+
+  -h  display this help and exit
+
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+MQTTIP=localhost
+HANDLER="OPCUAClient"
+
+while getopts "a:i:h" opt; do
+    case $opt in
+    a)
+       HANDLER=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    i)
+       MQTTIP=$OPTARG
+       ;;
+    esac
+done
+
+TOPIC="/cagent/admin/${HANDLER}/notify"
+
+PAYLOAD="$(cat <<-EOF
+{
+  "hb": {
+    "devID": "${HANDLER}"
+  }
+}
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    usage
+fi
