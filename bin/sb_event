@@ -53,6 +53,9 @@ while getopts "a:i:m:s:t:h" opt; do
     a)
        HANDLER=$OPTARG
        ;;
+    h)
+       usage
+       ;;
     i)
        MQTTIP=$OPTARG
        ;;
@@ -64,9 +67,6 @@ while getopts "a:i:m:s:t:h" opt; do
        ;;
     t)
        SUBTYPE=$OPTARG
-       ;;
-    h)
-       usage
        ;;
     esac
 done

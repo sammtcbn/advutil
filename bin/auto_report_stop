@@ -1,39 +1,64 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
 # just for south-bound
-# Written by sammtcbn 2019.4.25
-function usage()
-{
-    echo "Usage: $0 [SERVER_IP]"
-    echo "    SERVER_IP: assign MQTT Broker ip, default is localhost,"
-    echo "               or you can use a test broker test.mosquitto.org"
-    exit 0
-}
+# Written by sammtcbn 2019.11.5
+ME=$(basename $0)
 
-SERVER=localhost
-#TOPIC="/cagent/admin/ODBC_Handler/agentcallbackreq"
-TOPIC="/cagent/admin/OPCUAClient/agentcallbackreq"
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
 
-if [ ! -z "${1}" ]; then
-    SERVER=${1}
-fi
+OPTIONS
+  -i <MQTT_IP>
+      assign MQTT Broker ip, default is localhost
 
-PAYLOAD="$(cat <<-EOF
-{
-  "susiCommData": {
-    "commCmd": 2056,
-    "requestItems": {
-      "All": {}
-    },
-    "handlerName": "general"
-  }
-}
+  -a <HANDLER>
+      default is OPCUAClient
+
+  -h  display this help and exit
 
 EOF
 )"
 
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
 
-mosquitto_pub -h ${SERVER} -t ${TOPIC} -d -m "${PAYLOAD}"
+MQTTIP=localhost
+HANDLER="OPCUAClient"
+
+while getopts "a:i:h" opt; do
+    case $opt in
+    a)
+       HANDLER=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    i)
+       MQTTIP=$OPTARG
+       ;;
+    esac
+done
+
+TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+      "commCmd": 2056,
+      "requestItems": {
+          "All": {}
+      },
+      "handlerName": "general"
+  }
+}
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
 if [ $? != 0 ]; then
     usage
 fi
