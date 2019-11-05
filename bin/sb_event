@@ -3,16 +3,24 @@
 # send a event just for south-bound
 # Written by sammtcbn 2019.11.4
 ME=$(basename $0)
+MQTTIP=localhost
+HANDLER="OPCUAClient"
+SEVERITY=5
+SUBTYPE="THRESHOLD_CHECK_ERROR"
+MSG="test"
 
 USAGE_STR="$(cat <<EOF
 Usage: ${ME} [OPTION]...
 
 OPTIONS
   -i <MQTT_IP>
-      assign MQTT Broker ip, default is localhost
+      assign MQTT Broker ip, default is ${MQTTIP}
+
+  -a <HANDLER>
+      default is ${HANDLER}
 
   -m <MESSAGE>
-      default message is test
+      default message is ${MSG}
 
   -s <SEVERITY>
       0: Emergency
@@ -20,16 +28,14 @@ OPTIONS
       2: Critical
       3: Error
       4: Warning
-      5: Informational (default)
+      5: Informational
       6: Debug
-
-  -a <HANDLER>
-      default is OPCUAClient
+      default severity is ${SEVERITY}
 
   -t <SUBTYPE>
       THRESHOLD_CHECK_INFO
       THRESHOLD_CHECK_ERROR
-      default is THRESHOLD_CHECK_ERROR
+      default is ${SUBTYPE}
 
   -h  display this help and exit
 
@@ -41,12 +47,6 @@ function usage()
     echo "$USAGE_STR"
     exit 0
 }
-
-MQTTIP=localhost
-HANDLER="OPCUAClient"
-SEVERITY=5
-SUBTYPE="THRESHOLD_CHECK_ERROR"
-MSG="test"
 
 while getopts "a:i:m:s:t:h" opt; do
     case $opt in

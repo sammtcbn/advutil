@@ -3,16 +3,18 @@
 # just for south-bound
 # Written by sammtcbn 2019.11.5
 ME=$(basename $0)
+MQTTIP=localhost
+HANDLER="OPCUAClient"
 
 USAGE_STR="$(cat <<EOF
 Usage: ${ME} [OPTION]...
 
 OPTIONS
   -i <MQTT_IP>
-      assign MQTT Broker ip, default is localhost
+      assign MQTT Broker ip, default is ${MQTTIP}
 
   -a <HANDLER>
-      default is OPCUAClient
+      default is ${HANDLER}
 
   -h  display this help and exit
 
@@ -24,9 +26,6 @@ function usage()
     echo "$USAGE_STR"
     exit 0
 }
-
-MQTTIP=localhost
-HANDLER="OPCUAClient"
 
 while getopts "a:i:h" opt; do
     case $opt in
