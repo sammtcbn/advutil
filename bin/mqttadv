@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.11.5
+# Written by sammtcbn 2019.11.6
 
 # support 5 favorite ip , edit ~/.config/.mqttadv , content as below:
 # 172.22.12.228
@@ -51,7 +51,9 @@ function cal_topic()
         return
     fi
 
-    if [ "${bound}" == "s" ]; then
+    if [ "${bound}" == "0" ]; then
+        topic=#
+    elif [ "${bound}" == "s" ]; then
         topic="/cagent/admin/${devid}/#"
     elif [ "${bound}" == "n" ]; then
         topic="/wisepaas/+/${devid}/#"
@@ -69,12 +71,18 @@ function showmenu()
     echo "topic     = ${topic}"
     echo ""
     echo "8) load broker setting from advpaasdev"
-    echo "b) assign bound"
+    echo "a) bound - 0"
+    echo "b) bound - south"
+    echo "c) bound - north"
+    echo ""
     echo "d) assign devid"
+    echo "e) assign devid to OPCUAClient"
+    echo "f) assign devid to esvm-win10"
+    echo "h) assign devid to pc041007"
+    echo ""
     echo "i) assign ip"
-    echo "j) assign ip/devid for esvmsl"
-    echo "k) assign ip/devid for pc041007"
-    echo "l) assign ip/devid for esvm-win10"
+    echo "j) assign ip to esvm-win10"
+    echo "k) assign ip to pc041007"
 
     if [ ! -z "${HOST1}" ]; then
         echo "1) assign ip to ${HOST1}"
@@ -146,39 +154,20 @@ do
               IP=${HOST5}
             fi
             ;;
-        8)
-            load_advpaasdev
-            ;;
-        b)
-           read -p "New bound [0/s/n] " bound
-           ;;
-        d)
-           read -p "New devid: " devid
-           ;;
-        i)
-           read -p "New IP: " IP
-           ;;
-        j)
-           IP=esvmsl
-           devid=00000001-0000-0000-0000-5254004BAD5F
-           ;;
-        k)
-           IP=pc041007
-           devid=00000001-0000-0000-0000-305A3A750CCA
-           ;;
-        l)
-           IP=esvm-win10
-           devid=00000001-0000-0000-0000-525400622D01
-           ;;
-        g)
-           break
-           ;;
-        q)
-            exit 0
-            ;;
-        r)
-            reset
-            ;;
+        8) load_advpaasdev;;
+        a) bound=0;;
+        b) bound=s;;
+        c) bound=n;;
+        d) read -p "New devid: " devid;;
+        e) devid=OPCUAClient;;
+        f) devid=00000001-0000-0000-0000-525400622D01;;
+        g) break;;
+        h) devid=00000001-0000-0000-0000-305A3A750CCA;;
+        i) read -p "New IP: " IP;;
+        j) IP=esvm-win10;;
+        k) IP=pc041007;;
+        q) exit 0;;
+        r) reset;;
     esac
 done
 
