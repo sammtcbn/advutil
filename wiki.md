@@ -1,3 +1,9 @@
+
+Server List  
+http://ess-wiki.advantech.com.tw/view/Server_List
+
+---
+
 Edge Sense LoRa GW Solution  
 http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution
 
@@ -271,3 +277,8 @@ http://ess-wiki.advantech.com.tw/view/Vue.js_Notes
 
 Web  
 http://ess-wiki.advantech.com.tw/view/Web_Knowledge
+
+---
+
+EI-Connect Handshake Protocol  
+http://wise-paas-documentation.docs.wise-paas.com/Documentation/#!documents/EI-Connect/handshake-protocol.md
