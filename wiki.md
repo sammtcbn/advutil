@@ -292,6 +292,12 @@ http://ess-wiki.advantech.com.tw/view/Web_Knowledge
 EI-Connect Handshake Protocol  
 http://wise-paas-documentation.docs.wise-paas.com/Documentation/#!documents/EI-Connect/handshake-protocol.md
 
+WISE-Agent Introduction  
+http://docs.wise-paas.advantech.com/en/Guides_and_API_References/Data_Acquisition/1565232684992916407/1565232757839214046/
+
+DeviceOn Introduction  
+http://docs.wise-paas.advantech.com/en/Guides_and_API_References/ApplicationServices/1564727799415968385/1564727878040194797/
+
 ---
 # HackMD
 
