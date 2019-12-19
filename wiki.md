@@ -10,8 +10,8 @@ http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution
 Edge Sense LoRa GW Solution internal  
 http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution_internal
 
-OPC-UA Client Linux  
-http://ess-wiki.advantech.com.tw/view/OPC-UA_Client_Linux
+OPC-UA Client  
+http://ess-wiki.advantech.com.tw/view/OPC-UA_Client
 
 Uartmgr  
 http://ess-wiki.advantech.com.tw/view/Uartmgr
@@ -303,6 +303,9 @@ http://docs.wise-paas.advantech.com/en/Guides_and_API_References/ApplicationServ
 
 New API-Gateway API for WISE-Agent  
 https://hackmd.io/xmUFKy4iTuu-0d7sgrjqYA
+
+Design rules for API-GW  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJLykeDtH
 
 Note of DS-100 with Debian  
 https://hackmd.io/_nv-VEr2TXGvICgj-LnL1Q
