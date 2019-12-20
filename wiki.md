@@ -310,5 +310,8 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJLykeDtH
 Note of DS-100 with Debian  
 https://hackmd.io/_nv-VEr2TXGvICgj-LnL1Q
 
+NCTU WSN Device SDK  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/S1FZo0Y0r
+
 ---
 
