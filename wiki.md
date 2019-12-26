@@ -1,8 +1,15 @@
 
-Server List  
-http://ess-wiki.advantech.com.tw/view/Server_List
-
 ---
+# EdgeSense software
+
+AgentLite-Node.js  
+http://ess-wiki.advantech.com.tw/view/AgentLite-Node.js
+
+AlarmEvent  
+http://ess-wiki.advantech.com.tw/view/AlarmEvent
+
+Configuration Tool  
+http://ess-wiki.advantech.com.tw/view/Configuration_Tool
 
 Edge Sense LoRa GW Solution  
 http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution
@@ -10,14 +17,44 @@ http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution
 Edge Sense LoRa GW Solution internal  
 http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution_internal
 
+EnOcean Link Solution  
+http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution
+
+EnOcean Link Solution internal  
+http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution_internal
+
+iAlarm  
+http://ess-wiki.advantech.com.tw/view/IAlarm
+
+Modbus Handler v1.0  
+http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
+
+Modbus Service  
+http://ess-wiki.advantech.com.tw/view/Modbus_Service
+
+MQTT Broker  
+http://ess-wiki.advantech.com.tw/view/MQTT_Broker
+
+ODBC Service  
+http://ess-wiki.advantech.com.tw/view/ODBC_Service
+
+ODBC Service internal  
+http://ess-wiki.advantech.com.tw/view/ODBC_Service_internal
+
 OPC-UA Client  
 http://ess-wiki.advantech.com.tw/view/OPC-UA_Client
+
+POC-Battery  
+http://ess-wiki.advantech.com.tw/view/POC-Battery
+
+SNMP-NMS  
+http://ess-wiki.advantech.com.tw/view/SNMP-NMS
 
 Uartmgr  
 http://ess-wiki.advantech.com.tw/view/Uartmgr
 
-SNMP-NMS  
-http://ess-wiki.advantech.com.tw/view/SNMP-NMS
+WASCADA Service  
+http://ess-wiki.advantech.com.tw/view/WASCADA_Service
 
 ---
 
@@ -132,48 +169,7 @@ http://ess-wiki.advantech.com.tw/view/NodeRED_for_EdgeSense
 Note of Porting RMM Agent 3.3  
 http://ess-wiki.advantech.com.tw/view/Note_of_Porting_RMM_Agent_3.3
 
-POC-Battery  
-http://ess-wiki.advantech.com.tw/view/POC-Battery
-
 ---
-
-AlarmEvent  
-http://ess-wiki.advantech.com.tw/view/AlarmEvent
-
-Configuration Tool  
-http://ess-wiki.advantech.com.tw/view/Configuration_Tool
-
-EnOcean Link Solution  
-http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution
-
-EnOcean Link Solution internal
-http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution_internal
-
-iAlarm  
-http://ess-wiki.advantech.com.tw/view/IAlarm
-
-Modbus Handler v1.0  
-http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
-
-Modbus Service  
-http://ess-wiki.advantech.com.tw/view/Modbus_Service
-
-MQTT Broker  
-http://ess-wiki.advantech.com.tw/view/MQTT_Broker
-
-ODBC Service  
-http://ess-wiki.advantech.com.tw/view/ODBC_Service
-
-ODBC Service internal  
-http://ess-wiki.advantech.com.tw/view/ODBC_Service_internal
-
-WASCADA Service  
-http://ess-wiki.advantech.com.tw/view/WASCADA_Service
-
----
-
-AgentLite-Node.js  
-http://ess-wiki.advantech.com.tw/view/AgentLite-Node.js
 
 Build Southbound service with Feature-Plugin  
 http://ess-wiki.advantech.com.tw/view/Build_Southbound_service_with_Feature-Plugin
@@ -266,11 +262,26 @@ Rule Engine
 http://ess-wiki.advantech.com.tw/view/Rule_Engine
 
 ---
-AdvancedInstaller  
-http://ess-wiki.advantech.com.tw/view/AdvancedInstaller
 
 EdgeSense Coding Style and Rule  
 http://ess-wiki.advantech.com.tw/view/EdgeSense_Coding_Style_and_Rule
+
+---
+
+EI-Connect Handshake Protocol  
+http://wise-paas-documentation.docs.wise-paas.com/Documentation/#!documents/EI-Connect/handshake-protocol.md
+
+WISE-Agent Introduction  
+http://docs.wise-paas.advantech.com/en/Guides_and_API_References/Data_Acquisition/1565232684992916407/1565232757839214046/
+
+DeviceOn Introduction  
+http://docs.wise-paas.advantech.com/en/Guides_and_API_References/ApplicationServices/1564727799415968385/1564727878040194797/
+
+---
+# Knowledge
+
+AdvancedInstaller  
+http://ess-wiki.advantech.com.tw/view/AdvancedInstaller
 
 Electron Notes  
 http://ess-wiki.advantech.com.tw/view/Electron_Notes
@@ -288,17 +299,6 @@ Web
 http://ess-wiki.advantech.com.tw/view/Web_Knowledge
 
 ---
-
-EI-Connect Handshake Protocol  
-http://wise-paas-documentation.docs.wise-paas.com/Documentation/#!documents/EI-Connect/handshake-protocol.md
-
-WISE-Agent Introduction  
-http://docs.wise-paas.advantech.com/en/Guides_and_API_References/Data_Acquisition/1565232684992916407/1565232757839214046/
-
-DeviceOn Introduction  
-http://docs.wise-paas.advantech.com/en/Guides_and_API_References/ApplicationServices/1564727799415968385/1564727878040194797/
-
----
 # HackMD
 
 New API-Gateway API for WISE-Agent  
@@ -314,4 +314,8 @@ NCTU WSN Device SDK
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/S1FZo0Y0r
 
 ---
+# MISC
+
+Server List
+http://ess-wiki.advantech.com.tw/view/Server_List
 
