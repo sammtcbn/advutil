@@ -57,6 +57,12 @@ WASCADA Service
 http://ess-wiki.advantech.com.tw/view/WASCADA_Service
 
 ---
+# EdgeSense doc
+
+Edge Sense Knowledge Sharing  
+http://ess-wiki.advantech.com.tw/view/Edge_Sense_Knowledge_Sharing
+
+---
 
 Deploy Tensorflow to K8S  
 http://ess-wiki.advantech.com.tw/view/Deploy_Tensorflow_to_K8S
@@ -150,9 +156,6 @@ http://ess-wiki.advantech.com.tw/view/Edge_Sense
 
 Edge Customer Service  
 http://ess-wiki.advantech.com.tw/view/Edge_Customer_Service
-
-Edge Sense Knowledge Sharing  
-http://ess-wiki.advantech.com.tw/view/Edge_Sense_Knowledge_Sharing
 
 EdgeSense Open Source  
 http://ess-wiki.advantech.com.tw/view/EdgeSense_Open_Source
@@ -292,6 +295,9 @@ http://ess-wiki.advantech.com.tw/view/Microsoft_SQL_Server
 NodeJS  
 http://ess-wiki.advantech.com.tw/view/NodeJS_Knowledge
 
+Node.js application as Windows service  
+http://ess-wiki.advantech.com.tw/view/Node.js_application_as_Windows_service
+
 Vue.js Notes  
 http://ess-wiki.advantech.com.tw/view/Vue.js_Notes
 
@@ -316,6 +322,6 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/S1FZo0Y0r
 ---
 # MISC
 
-Server List
+Server List  
 http://ess-wiki.advantech.com.tw/view/Server_List
 
