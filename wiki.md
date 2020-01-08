@@ -322,6 +322,9 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/S1FZo0Y0r
 Self-Web  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Sk9wq9PaH
 
+Create a .Net Core C# program  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/rkoYhQRHr
+
 ---
 # MISC
 
