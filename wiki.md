@@ -29,6 +29,9 @@ http://ess-wiki.advantech.com.tw/view/IAlarm
 Modbus Handler v1.0  
 http://ess-wiki.advantech.com.tw/view/Modbus_Handler_v1.0
 
+Modbus Master  
+http://ess-wiki.advantech.com.tw/view/Modbus_Master
+
 Modbus Service  
 http://ess-wiki.advantech.com.tw/view/Modbus_Service
 
