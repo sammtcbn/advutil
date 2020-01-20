@@ -39,6 +39,9 @@ OPTIONS
 
   -h  display this help and exit
 
+  ex:
+      ialarm_send -i 172.22.12.129 -m "test123" -s 3 -t THRESHOLD_CHECK_ERROR
+
 EOF
 )"
 
