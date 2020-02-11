@@ -334,6 +334,12 @@ https://hackmd.io/HosySehgRTWar6NhiX11VQ
 iAlarm Notification  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/r1q14o9Fr
 
+使用Vue開發Self-web  
+https://hackmd.io/mvwr9Z80TT-fUsTGvH2z-w
+
+Develop Self-Web (Front-End)  
+https://hackmd.io/b6DCWDhhTzCqV0yBpOZczw
+
 ---
 # MISC
 
