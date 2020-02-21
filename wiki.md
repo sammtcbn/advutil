@@ -26,6 +26,9 @@ http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution_Grafana_Demo
 EnOcean Link Solution internal  
 http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution_internal
 
+Gantt-chart-for-TLS  
+http://ess-wiki.advantech.com.tw/view/Gantt-chart-for-TLS
+
 iAlarm  
 http://ess-wiki.advantech.com.tw/view/IAlarm
 
