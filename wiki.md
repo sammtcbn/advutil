@@ -20,6 +20,9 @@ http://ess-wiki.advantech.com.tw/view/Edge_Sense_LoRa_GW_Solution_internal
 EnOcean Link Solution  
 http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution
 
+EnOcean Link Solution Grafana Demo  
+http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution_Grafana_Demo
+
 EnOcean Link Solution internal  
 http://ess-wiki.advantech.com.tw/view/EnOcean_Link_Solution_internal
 
