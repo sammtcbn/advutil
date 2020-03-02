@@ -328,9 +328,6 @@ https://hackmd.io/_nv-VEr2TXGvICgj-LnL1Q
 NCTU WSN Device SDK  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/S1FZo0Y0r
 
-Self-Web  
-https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Sk9wq9PaH
-
 Create a .Net Core C# program  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/rkoYhQRHr
 
@@ -343,8 +340,15 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/r1q14o9Fr
 使用Vue開發Self-web  
 https://hackmd.io/mvwr9Z80TT-fUsTGvH2z-w
 
-Develop Self-Web (Front-End)  
+Self-Web  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Sk9wq9PaH
+
+Self-Web Front-End  
 https://hackmd.io/b6DCWDhhTzCqV0yBpOZczw
+
+Self-Web Back-end (Plug-in)  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Bkg-cB0zU
+
 
 ---
 # MISC
