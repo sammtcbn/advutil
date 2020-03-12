@@ -1,0 +1,64 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# Written by sammtcbn 2020.3.12
+ME=$(basename $0)
+HTTP_IP=localhost
+HTTP_PORT=3000
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -i <HTTP Server IP>
+      assign HTTP server ip, default is ${HTTP_IP}
+
+  -p <HTTP Server Port>
+      assign HTTP server port, default is ${HTTP_PORT}
+
+  -c <Command>
+      devinfo - get device information
+
+  -h  display this help and exit
+ 
+EOF
+)"
+
+function usage() {
+    echo "$USAGE_STR"
+    exit 0
+}
+
+function f_devinfo() {
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/device/info | python -m json.tool"
+    #echo ${cmds}
+    eval ${cmds}
+}
+
+while getopts "c:hi:p:" opt; do
+    case $opt in
+    c)
+       CMD=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    i)
+       HTTP_IP=$OPTARG
+       ;;
+    p)
+       HTTP_PORT=$OPTARG
+       ;;
+    esac
+done
+
+#echo HTTP server = ${HTTP_IP}:${HTTP_PORT}
+
+if [ -z "${CMD}" ]; then
+    usage
+fi
+
+
+if [ "${CMD}" == "devinfo" ]; then
+    f_devinfo
+fi
+
