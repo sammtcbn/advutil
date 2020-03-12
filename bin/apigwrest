@@ -17,6 +17,7 @@ OPTIONS
 
   -c <Command>
       devinfo - get device information
+      agentst - get wiseagent status
 
   -h  display this help and exit
  
@@ -31,6 +32,11 @@ function usage() {
 function f_devinfo() {
     cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/device/info | python -m json.tool"
     #echo ${cmds}
+    eval ${cmds}
+}
+
+function f_agentst() {
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/status | python -m json.tool"
     eval ${cmds}
 }
 
@@ -60,5 +66,7 @@ fi
 
 if [ "${CMD}" == "devinfo" ]; then
     f_devinfo
+elif [ "${CMD}" == "agentst" ]; then
+    f_agentst
 fi
 
