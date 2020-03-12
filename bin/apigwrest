@@ -16,8 +16,10 @@ OPTIONS
       assign HTTP server port, default is ${HTTP_PORT}
 
   -c <Command>
-      devinfo - get device information
-      agentst - get wiseagent status
+      devinfo   - get device information
+      agentst   - get wiseagent status
+      agentinfo - get wiseagent information
+      srvlist   - get service list
 
   -h  display this help and exit
  
@@ -37,6 +39,16 @@ function f_devinfo() {
 
 function f_agentst() {
     cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/status | python -m json.tool"
+    eval ${cmds}
+}
+
+function f_agentinfo() {
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/servicekey | python -m json.tool"
+    eval ${cmds}
+}
+
+function f_srvlist() {
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/service/list | python -m json.tool"
     eval ${cmds}
 }
 
@@ -68,5 +80,11 @@ if [ "${CMD}" == "devinfo" ]; then
     f_devinfo
 elif [ "${CMD}" == "agentst" ]; then
     f_agentst
+elif [ "${CMD}" == "agentinfo" ]; then
+    f_agentinfo
+elif [ "${CMD}" == "srvlist" ]; then
+    f_srvlist
+else
+    usage
 fi
 
