@@ -19,6 +19,9 @@ OPTIONS
       devinfo   - get device information
       agentst   - get wiseagent status
       agentinfo - get wiseagent information
+      agentctl  - service control for wiseagent
+                  * need to assign Action with -a
+                  * ex: apigwrest -c srvctl -a restart
       srvlist   - get service list
       srvctl    - service control
                   * need to assign Action with -a
@@ -53,6 +56,13 @@ function f_agentst() {
 
 function f_agentinfo() {
     cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/servicekey | python -m json.tool"
+    eval ${cmds}
+}
+
+function f_agentctl() {
+    chk_service_action
+    cmds="curl -X PUT -H \"Content-Type: application/json\" -d '{\"action\": \"${ACTION}\"}'  http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/ctrl"
+    #echo ${cmds}
     eval ${cmds}
 }
 
@@ -118,6 +128,8 @@ elif [ "${CMD}" == "agentst" ]; then
     f_agentst
 elif [ "${CMD}" == "agentinfo" ]; then
     f_agentinfo
+elif [ "${CMD}" == "agentctl" ]; then
+    f_agentctl
 elif [ "${CMD}" == "srvlist" ]; then
     f_srvlist
 elif [ "${CMD}" == "srvctl" ]; then
