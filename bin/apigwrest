@@ -20,6 +20,15 @@ OPTIONS
       agentst   - get wiseagent status
       agentinfo - get wiseagent information
       srvlist   - get service list
+      srvctl    - service control
+                  * need to assign Action with -a
+                  * need to assign Service Name with -s
+                  * ex: apigwrest -c srvctl -a restart -s service1
+
+  -a <Action>
+      start / stop / restart
+
+  -s <Service Name>
 
   -h  display this help and exit
  
@@ -52,8 +61,32 @@ function f_srvlist() {
     eval ${cmds}
 }
 
-while getopts "c:hi:p:" opt; do
+function chk_service_action(){
+    if [ -z "${ACTION}" ]; then
+        usage
+    fi
+
+    if [ "${ACTION}" != "start" ] && [ "${ACTION}" != "stop" ] && [ "${ACTION}" != "restart" ]; then
+        usage
+    fi
+}
+
+function f_srvctl() {
+    chk_service_action
+    if [ -z "${SERVICE_NAME}" ]; then
+        usage
+    fi
+
+    cmds="curl -X PUT -H \"Content-Type: application/json\" -d '{\"ServiceName\": \"${SERVICE_NAME}\", \"Action\": \"${ACTION}\"}'  http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/service/ctrl"
+    #echo ${cmds}
+    eval ${cmds}
+}
+
+while getopts "a:c:hi:p:s:" opt; do
     case $opt in
+    a)
+       ACTION=$OPTARG
+       ;;
     c)
        CMD=$OPTARG
        ;;
@@ -65,6 +98,9 @@ while getopts "c:hi:p:" opt; do
        ;;
     p)
        HTTP_PORT=$OPTARG
+       ;;
+    s)
+       SERVICE_NAME=$OPTARG
        ;;
     esac
 done
@@ -84,6 +120,8 @@ elif [ "${CMD}" == "agentinfo" ]; then
     f_agentinfo
 elif [ "${CMD}" == "srvlist" ]; then
     f_srvlist
+elif [ "${CMD}" == "srvctl" ]; then
+    f_srvctl
 else
     usage
 fi
