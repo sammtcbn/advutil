@@ -1,0 +1,84 @@
+#!/bin/bash
+# https://github.com/sammtcbn/advutil
+# just for south-bound
+# Written by sammtcbn 2020.3.13
+ME=$(basename $0)
+MQTTIP=localhost
+HANDLER="OPCUAClient"
+INTERVAL=10000
+TIMEOUT=30000
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -i <MQTT_IP>
+      assign MQTT Broker ip, default is ${MQTTIP}
+
+  -a <HANDLER>
+      default is ${HANDLER}
+
+  -s <INTERVAL>
+      assign auto upload interval (ms) , default is ${INTERVAL}
+
+  -t <TIMEOUT>
+      assign auto upload timeout (ms) , default is ${TIMEOUT}
+
+  -h  display this help and exit
+ 
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+while getopts "a:i:s:ht:" opt; do
+    case $opt in
+    a)
+       HANDLER=$OPTARG
+       ;;
+    h)
+       usage
+       ;;
+    i)
+       MQTTIP=$OPTARG
+       ;;
+    s)
+       INTERVAL=$OPTARG
+       ;;
+    t)
+       TIMEOUT=$OPTARG
+       ;;
+    esac
+done
+
+TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "commCmd": 533,
+    "catalogID": 4,
+    "handlerName": "${HANDLER}",
+    "requestItems": {
+      "e": [
+        {
+          "n": "${HANDLER}"
+        }
+      ]
+    },
+    "autoUploadIntervalMs": ${INTERVAL},
+    "autoUploadTimeoutMs": ${TIMEOUT}
+  }
+}
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    usage
+fi
