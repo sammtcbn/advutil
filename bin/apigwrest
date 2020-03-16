@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2020.3.12
+# Written by sammtcbn 2020.3.16
 ME=$(basename $0)
 HTTP_IP=localhost
 HTTP_PORT=3000
@@ -27,6 +27,7 @@ OPTIONS
                   * need to assign Action with -a
                   * need to assign Service Name with -s
                   * ex: apigwrest -c srvctl -a restart -s service1
+      infoall   - get all information, sucn as devinfo, agentst, agentinfo, srvlist
 
   -a <Action>
       start / stop / restart
@@ -134,6 +135,11 @@ elif [ "${CMD}" == "srvlist" ]; then
     f_srvlist
 elif [ "${CMD}" == "srvctl" ]; then
     f_srvctl
+elif [ "${CMD}" == "infoall" ]; then
+    f_devinfo
+    f_agentst
+    f_agentinfo
+    f_srvlist
 else
     usage
 fi
