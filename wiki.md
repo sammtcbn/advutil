@@ -355,6 +355,12 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/B1wgFwyrL
 EdgeSense Software Packing Rule  
 https://hackmd.io/IwtMX99CTviOlwzVsd2eug
 
+User Manual  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/HkRx4P_B8
+
+User Manual - E2I APP Server  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/SyiPHyoLI
+
 ---
 # MISC
 
