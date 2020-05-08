@@ -367,6 +367,24 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/HkRx4P_B8
 User Manual - E2I APP Server  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/SyiPHyoLI
 
+Note of local Data base  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/rJI4HJ1vU
+
+Note of ElasticSearch  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Ska5xynO8
+
+Note of SEMI/GEN  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/SJTxWgVtU
+
+Doc embedded in Web  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJUkl1mOU
+
+Note of E2I Customization Dashboard  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Skjx0QVFL
+
+Note of A+B=C  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Hkli2EPpB
+
 ---
 # MISC
 
