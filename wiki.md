@@ -397,3 +397,6 @@ https://hackmd.io/bGUqClAHQOa1jKdQFpiibg
 Server List  
 http://ess-wiki.advantech.com.tw/view/Server_List
 
+AIMLinux/AddOn/DeviceOn  
+http://ess-wiki.advantech.com.tw/view/AIMLinux/AddOn/DeviceOn
+
