@@ -1,6 +1,4 @@
 #!/bin/bash
-# https://github.com/sammtcbn/dotfiles
-# Written by sammtcbn 2020.5.27
 TOPDIR=$(pwd)
 
 GIT_SERVER=gitlab.edgecenter.io

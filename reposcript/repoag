@@ -64,26 +64,8 @@ function gc()
 
 load_git_account
 
-gc edgesense epack
-gc edgesense support-i-alarm-node.js
-gc edgesense advsc
-gc edgesense APIGateway
-gc edgesense mqttbroker
-gc edgesense Service-SDK
+gc edgesense wise-agent-core RMM-EI-Agent_Installer
+gc edgesense wise-agent-core RMM-EI-Agent
+gc edgesense wise-agent-core RMM-EI-Agent_New_UI
 
-gc edgesense device-snmp-nms-node.js
-
-gc edgesense reyaxsol
-gc edgesense uartmgr
-
-gc edgesense device-odbc
-
-gc edgesense TowerLight-Sensor
-
-gc edgesense industrial-protocol-sdk
-gc edgesense device-industry-node.js
-
-gc edgesense device-opcua-client-node.js
-
-gc edgesense poc_battery-app-wpf
-gc edgesense device-poc_link-mgt-node.js
+gc edgesense ei-paas-utility_repo advtools
