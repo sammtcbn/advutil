@@ -70,6 +70,8 @@ gc edgesense advsc
 gc edgesense APIGateway
 gc edgesense mqttbroker
 gc edgesense Service-SDK
+gc edgesense device-net-monitor
+gc edgesense device-process-monitor
 
 gc edgesense device-snmp-nms-node.js
 
@@ -87,3 +89,8 @@ gc edgesense device-opcua-client-node.js
 
 gc edgesense poc_battery-app-wpf
 gc edgesense device-poc_link-mgt-node.js
+
+gc edgesense e2i-edge-installer
+gc edgesense e2i-edge-webconsole
+gc edgesense e2i-server-installer
+

@@ -66,3 +66,4 @@ load_git_account
 
 gc ADVANTECH-Corp WiseSnail
 gc ADVANTECH-Corp agentlite
+gc ADVANTECH-Corp APIGateway

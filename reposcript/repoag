@@ -64,8 +64,8 @@ function gc()
 
 load_git_account
 
-gc edgesense wise-agent-core RMM-EI-Agent_Installer
 gc edgesense wise-agent-core RMM-EI-Agent
+gc edgesense wise-agent-core RMM-EI-Agent_Installer
 gc edgesense wise-agent-core RMM-EI-Agent_New_UI
 
 gc edgesense ei-paas-utility_repo advtools
