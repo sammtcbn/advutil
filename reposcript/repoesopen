@@ -67,5 +67,4 @@ load_git_account
 gc edgesense-open advlog-node.js
 gc edgesense-open agentlite-node.js
 gc edgesense-open device-template-node.js
-gc edgesense-open advins-template
 gc edgesense-open advsc-binary

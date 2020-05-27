@@ -65,6 +65,7 @@ function gc()
 load_git_account
 
 gc edgesense epack
+gc edgesense advins-template
 gc edgesense support-i-alarm-node.js
 gc edgesense advsc
 gc edgesense APIGateway
