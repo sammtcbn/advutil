@@ -5,7 +5,7 @@ VER=0.1
 
 USAGE_STR="$(cat <<EOF
 ${ME} ${VER}
-Usage: ${ME} [OPTIONS]
+Usage: ${ME} [OPTIONS] ...
 
 OPTIONS
   es
@@ -27,12 +27,6 @@ function usage()
     echo "$USAGE_STR"
     exit 0
 }
-
-if [ -z "${1}" ]; then
-    usage
-fi
-
-opt=${1}
 
 function f_ag()
 {
@@ -115,12 +109,19 @@ f_ess
 f_github
 }
 
-case $opt in
-    ag)     f_ag;;
-    dss)    f_dss;;
-    es)     f_es;;
-    esopen) f_esopen;;
-    ess)    f_ess;;
-    github) f_github;;
-    all)    f_all;;
-esac
+if [ -z "${1}" ]; then
+    usage
+fi
+
+for opt in $@
+do
+    case $opt in
+      ag)     f_ag;;
+      dss)    f_dss;;
+      es)     f_es;;
+      esopen) f_esopen;;
+      ess)    f_ess;;
+      github) f_github;;
+      all)    f_all;;
+    esac
+done
