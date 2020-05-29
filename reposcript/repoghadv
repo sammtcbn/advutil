@@ -1,4 +1,0 @@
-#!/bin/bash
-gclone https://github.com/ADVANTECH-Corp/WiseSnail.git
-gclone https://github.com/ADVANTECH-Corp/agentlite.git
-gclone https://github.com/ADVANTECH-Corp/APIGateway.git

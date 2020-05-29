@@ -1,2 +1,0 @@
-#!/bin/bash
-gclone https://gitlab.edgecenter.io/eiss_cloud_solution_team/node-red.git

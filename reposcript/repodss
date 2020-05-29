@@ -1,5 +1,0 @@
-#!/bin/bash
-gclone https://gitlab.edgecenter.io/edgesense-ai-server/DeviceON.git
-gclone https://gitlab.edgecenter.io/edgesense-ai-server/dss-manifest.git
-gclone https://gitlab.edgecenter.io/edgesense-ai-server/deployoffline.git
-gclone https://gitlab.edgecenter.io/edgesense-ai-server/deployoffline-build.git

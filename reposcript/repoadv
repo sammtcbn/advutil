@@ -1,0 +1,126 @@
+#!/bin/bash
+# Written by sammtcbn 2020.5.29
+ME=$(basename $0)
+VER=0.1
+
+USAGE_STR="$(cat <<EOF
+${ME} ${VER}
+Usage: ${ME} [OPTIONS]
+
+OPTIONS
+  es
+  esopen
+  ag
+  ess
+  dss
+  github
+  all
+  
+Example
+  ${ME} esopen
+
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+if [ -z "${1}" ]; then
+    usage
+fi
+
+opt=${1}
+
+function f_ag()
+{
+gclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent.git
+gclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_Installer.git
+gclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_New_UI.git
+
+gclone https://gitlab.edgecenter.io/ei-paas-utility_repo/advtools.git
+}
+
+function f_dss()
+{
+gclone https://gitlab.edgecenter.io/edgesense-ai-server/DeviceON.git
+gclone https://gitlab.edgecenter.io/edgesense-ai-server/dss-manifest.git
+gclone https://gitlab.edgecenter.io/edgesense-ai-server/deployoffline.git
+gclone https://gitlab.edgecenter.io/edgesense-ai-server/deployoffline-build.git
+}
+
+function f_es()
+{
+gclone https://gitlab.edgecenter.io/edgesense/epack.git
+gclone https://gitlab.edgecenter.io/edgesense/advins-template.git
+gclone https://gitlab.edgecenter.io/edgesense/support-i-alarm-node.js.git
+gclone https://gitlab.edgecenter.io/edgesense/advsc.git
+gclone https://gitlab.edgecenter.io/edgesense/APIGateway.git
+gclone https://gitlab.edgecenter.io/edgesense/mqttbroker.git
+gclone https://gitlab.edgecenter.io/edgesense/Service-SDK.git
+gclone https://gitlab.edgecenter.io/edgesense/device-net-monitor.git
+gclone https://gitlab.edgecenter.io/edgesense/device-process-monitor.git
+
+gclone https://gitlab.edgecenter.io/edgesense/device-snmp-nms-node.js.git
+
+gclone https://gitlab.edgecenter.io/edgesense/reyaxsol.git
+gclone https://gitlab.edgecenter.io/edgesense/uartmgr.git
+
+gclone https://gitlab.edgecenter.io/edgesense/device-odbc.git
+
+gclone https://gitlab.edgecenter.io/edgesense/TowerLight-Sensor.git
+
+gclone https://gitlab.edgecenter.io/edgesense/industrial-protocol-sdk.git
+gclone https://gitlab.edgecenter.io/edgesense/device-industry-node.js.git
+
+gclone https://gitlab.edgecenter.io/edgesense/device-opcua-client-node.js.git
+
+gclone https://gitlab.edgecenter.io/edgesense/poc_battery-app-wpf.git
+gclone https://gitlab.edgecenter.io/edgesense/device-poc_link-mgt-node.js.git
+
+gclone https://gitlab.edgecenter.io/edgesense/e2i-edge-installer.git
+gclone https://gitlab.edgecenter.io/edgesense/e2i-edge-webconsole.git
+gclone https://gitlab.edgecenter.io/edgesense/e2i-server-installer.git
+}
+
+function f_esopen()
+{
+gclone https://gitlab.edgecenter.io/edgesense-open/advlog-node.js.git
+gclone https://gitlab.edgecenter.io/edgesense-open/agentlite-node.js.git
+gclone https://gitlab.edgecenter.io/edgesense-open/device-template-node.js.git
+gclone https://gitlab.edgecenter.io/edgesense-open/advsc-binary.git
+}
+
+function f_ess()
+{
+gclone https://gitlab.edgecenter.io/eiss_cloud_solution_team/node-red.git
+}
+
+function f_github()
+{
+gclone https://github.com/ADVANTECH-Corp/WiseSnail.git
+gclone https://github.com/ADVANTECH-Corp/agentlite.git
+gclone https://github.com/ADVANTECH-Corp/APIGateway.git
+}
+
+function f_all()
+{
+f_ag
+f_dss
+f_es
+f_esopen
+f_ess
+f_github
+}
+
+case $opt in
+    ag)     f_ag;;
+    dss)    f_dss;;
+    es)     f_es;;
+    esopen) f_esopen;;
+    ess)    f_ess;;
+    github) f_github;;
+    all)    f_all;;
+esac

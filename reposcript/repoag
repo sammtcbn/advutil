@@ -1,6 +1,0 @@
-#!/bin/bash
-gclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent.git
-gclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_Installer.git
-gclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_New_UI.git
-
-gclone https://gitlab.edgecenter.io/ei-paas-utility_repo/advtools.git

@@ -1,5 +1,0 @@
-#!/bin/bash
-gclone https://gitlab.edgecenter.io/edgesense-open/advlog-node.js.git
-gclone https://gitlab.edgecenter.io/edgesense-open/agentlite-node.js.git
-gclone https://gitlab.edgecenter.io/edgesense-open/device-template-node.js.git
-gclone https://gitlab.edgecenter.io/edgesense-open/advsc-binary.git
