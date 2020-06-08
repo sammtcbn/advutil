@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2020.3.16
+# Written by sammtcbn 2020.6.8
 ME=$(basename $0)
 HTTP_IP=localhost
 HTTP_PORT=3000
@@ -16,18 +16,19 @@ OPTIONS
       assign HTTP server port, default is ${HTTP_PORT}
 
   -c <Command>
-      devinfo   - get device information
-      agentst   - get wiseagent status
-      agentinfo - get wiseagent information
-      agentctl  - service control for wiseagent
-                  * need to assign Action with -a
-                  * ex: apigwrest -c srvctl -a restart
-      srvlist   - get service list
-      srvctl    - service control
-                  * need to assign Action with -a
-                  * need to assign Service Name with -s
-                  * ex: apigwrest -c srvctl -a restart -s service1
-      infoall   - get all information, sucn as devinfo, agentst, agentinfo, srvlist
+      senhublist - get all senhub list
+      devinfo    - get device information
+      agentst    - get wiseagent status
+      agentinfo  - get wiseagent information
+      agentctl   - service control for wiseagent
+                   * need to assign Action with -a
+                   * ex: apigwrest -c srvctl -a restart
+      srvlist    - get service list
+      srvctl     - service control
+                   * need to assign Action with -a
+                   * need to assign Service Name with -s
+                   * ex: apigwrest -c srvctl -a restart -s service1
+      infoall    - get all information, sucn as devinfo, agentst, agentinfo, srvlist
 
   -a <Action>
       start / stop / restart
@@ -42,6 +43,11 @@ EOF
 function usage() {
     echo "$USAGE_STR"
     exit 0
+}
+
+function f_allsenhublist() {
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/restapi/WSNManage/SenHub/AllSenHubList | python -m json.tool"
+    eval ${cmds}
 }
 
 function f_devinfo() {
@@ -122,8 +128,9 @@ if [ -z "${CMD}" ]; then
     usage
 fi
 
-
-if [ "${CMD}" == "devinfo" ]; then
+if [ "${CMD}" == "senhublist" ]; then
+    f_allsenhublist
+elif [ "${CMD}" == "devinfo" ]; then
     f_devinfo
 elif [ "${CMD}" == "agentst" ]; then
     f_agentst
@@ -136,6 +143,7 @@ elif [ "${CMD}" == "srvlist" ]; then
 elif [ "${CMD}" == "srvctl" ]; then
     f_srvctl
 elif [ "${CMD}" == "infoall" ]; then
+    f_allsenhublist
     f_devinfo
     f_agentst
     f_agentinfo
