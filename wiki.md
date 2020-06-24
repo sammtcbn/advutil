@@ -397,8 +397,17 @@ https://hackmd.io/zRcb7CS_TZC5H8HlJcHZdg
 DBMS (DataBase Maintenace Service)  
 https://hackmd.io/@bjLN6nAJTVuJDc0BMBV12A/B1cpYZypI
 
+E2I  
+https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/ry_GydlRU
+
+DeviceOn Portal  
+https://hackmd.io/434wh51uTQegY-H3C6uT_A
+
 DeviceOn Database  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJjGyA43I
+
+DeviceOn DSS  
+https://hackmd.io/l35YNI9qTouzhFgIWUTGMA?view
 
 FaceView Sensor Data  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Bk-6tRZ2U
