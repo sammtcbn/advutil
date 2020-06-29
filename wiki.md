@@ -397,7 +397,7 @@ https://hackmd.io/zRcb7CS_TZC5H8HlJcHZdg
 DBMS (DataBase Maintenace Service)  
 https://hackmd.io/@bjLN6nAJTVuJDc0BMBV12A/B1cpYZypI
 
-E2I  
+EdgeSense Technical HackMD link list  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/ry_GydlRU
 
 DeviceOn Portal  
