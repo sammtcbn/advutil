@@ -385,7 +385,7 @@ https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJUkl1mOU
 Note of E2I Customization Dashboard  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Skjx0QVFL
 
-Note of A+B=C  
+plug sensor  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Hkli2EPpB
 
 Survey Database  
