@@ -20,3 +20,5 @@ git clone https://gitlab.edgecenter.io/edgesense/e2i-edge-webconsole.git
 git clone https://gitlab.edgecenter.io/edgesense/e2i-edge-installer.git
 
 git clone https://gitlab.edgecenter.io/edgesense/e2i-server-installer.git
+
+git clone https://gitlab.edgecenter.io/edgesense/grafana.git

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Written by sammtcbn 2020.6.5
+# Written by sammtcbn 2020.7.1
 ME=$(basename $0)
 VER=0.1
 
@@ -90,6 +90,8 @@ myclone https://gitlab.edgecenter.io/edgesense/e2i-server-installer.git
 
 myclone https://gitlab.edgecenter.io/edgesense/DBMService.git
 myclone https://gitlab.edgecenter.io/edgesense/InfluxDB.git
+
+myclone https://gitlab.edgecenter.io/edgesense/grafana.git
 }
 
 function f_esopen()
