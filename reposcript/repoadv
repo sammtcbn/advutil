@@ -88,6 +88,8 @@ myclone https://gitlab.edgecenter.io/edgesense/e2i-edge-installer.git
 myclone https://gitlab.edgecenter.io/edgesense/e2i-edge-webconsole.git
 myclone https://gitlab.edgecenter.io/edgesense/e2i-server-installer.git
 
+myclone https://gitlab.edgecenter.io/edgesense/e2i-container-maker.git
+
 myclone https://gitlab.edgecenter.io/edgesense/DBMService.git
 myclone https://gitlab.edgecenter.io/edgesense/InfluxDB.git
 
