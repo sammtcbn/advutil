@@ -1,0 +1,14 @@
+net stop device-odbc
+net stop device-modbus-service
+net stop device-modbus-protocol
+net stop device-opcua-client
+net stop device-wascada
+net stop support-i-alarm
+net stop device-net-monitor
+net stop device-process-monitor
+net stop NodeRed
+net stop APIGateway
+net stop nginx
+net stop SAWatchdog
+net stop WISEAgentService
+net stop mosquitto
