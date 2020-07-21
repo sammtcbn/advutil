@@ -81,6 +81,8 @@ myclone https://gitlab.edgecenter.io/edgesense/device-industry-node.js.git
 
 myclone https://gitlab.edgecenter.io/edgesense/device-opcua-client-node.js.git
 
+myclone https://gitlab.edgecenter.io/edgesense/device-wascada-handler.git
+
 myclone https://gitlab.edgecenter.io/edgesense/poc_battery-app-wpf.git
 myclone https://gitlab.edgecenter.io/edgesense/device-poc_link-mgt-node.js.git
 
@@ -91,7 +93,6 @@ myclone https://gitlab.edgecenter.io/edgesense/e2i-server-installer.git
 myclone https://gitlab.edgecenter.io/edgesense/e2i-container-maker.git
 
 myclone https://gitlab.edgecenter.io/edgesense/DBMService.git
-myclone https://gitlab.edgecenter.io/edgesense/InfluxDB.git
 
 myclone https://gitlab.edgecenter.io/edgesense/grafana.git
 }
