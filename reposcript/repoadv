@@ -13,6 +13,7 @@ OPTIONS
   ag
   ess
   dss
+  personal
   github
   all
   
@@ -110,6 +111,11 @@ function f_ess()
 myclone https://gitlab.edgecenter.io/eiss_cloud_solution_team/node-red.git
 }
 
+function f_personal()
+{
+myclone https://gitlab.edgecenter.io/Sam35.Lin/advsc_local_unlock_str.git
+}
+
 function f_github()
 {
 myclone https://github.com/ADVANTECH-Corp/WiseSnail.git
@@ -125,6 +131,7 @@ f_es
 f_esopen
 f_ess
 f_github
+f_personal
 }
 
 if [ -z "${1}" ]; then
@@ -140,6 +147,7 @@ do
       esopen) f_esopen;;
       ess)    f_ess;;
       github) f_github;;
+      personal) f_personal;;
       all)    f_all;;
     esac
 done
