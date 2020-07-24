@@ -1,4 +1,7 @@
 
+EdgeSense team HackMD  
+https://hackmd.io/team/edgesense
+
 ---
 # DeviceOn
 
