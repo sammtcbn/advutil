@@ -331,17 +331,11 @@ https://hackmd.io/xmUFKy4iTuu-0d7sgrjqYA
 Design rules for API-GW  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJLykeDtH
 
-Note of DS-100 with Debian  
-https://hackmd.io/_nv-VEr2TXGvICgj-LnL1Q
-
 NCTU WSN Device SDK  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/S1FZo0Y0r
 
 Create a .Net Core C# program  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/rkoYhQRHr
-
-Service Mgt  
-https://hackmd.io/HosySehgRTWar6NhiX11VQ
 
 iAlarm Notification  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/r1q14o9Fr
@@ -357,12 +351,6 @@ https://hackmd.io/b6DCWDhhTzCqV0yBpOZczw
 
 Self-Web Back-end (Plug-in)  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Bkg-cB0zU
-
-E2I Back-end System  
-https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/B1wgFwyrL
-
-EdgeSense Software Packing Rule  
-https://hackmd.io/IwtMX99CTviOlwzVsd2eug
 
 User Manual  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/HkRx4P_B8
@@ -400,14 +388,8 @@ https://hackmd.io/@bjLN6nAJTVuJDc0BMBV12A/B1cpYZypI
 EdgeSense Technical HackMD link list  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/ry_GydlRU
 
-DeviceOn Portal  
-https://hackmd.io/434wh51uTQegY-H3C6uT_A
-
 DeviceOn Database  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/BJjGyA43I
-
-DeviceOn DSS  
-https://hackmd.io/l35YNI9qTouzhFgIWUTGMA?view
 
 FaceView Sensor Data  
 https://hackmd.io/@uO8IVd88TQuLZ4exNN3tag/Bk-6tRZ2U
