@@ -114,6 +114,7 @@ myclone https://gitlab.edgecenter.io/eiss_cloud_solution_team/node-red.git
 function f_personal()
 {
 myclone https://gitlab.edgecenter.io/Sam35.Lin/advsc_local_unlock_str.git
+myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i_plugin_config.git
 }
 
 function f_github()
