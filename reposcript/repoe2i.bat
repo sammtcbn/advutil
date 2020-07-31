@@ -28,3 +28,5 @@ git clone https://gitlab.edgecenter.io/edgesense/e2i-container-maker.git
 git clone https://gitlab.edgecenter.io/edgesense/grafana.git
 
 git clone https://gitlab.edgecenter.io/edgesense/DBMService.git
+
+git clone https://gitlab.edgecenter.io/edgesense/uninstalltool.git
