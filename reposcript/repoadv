@@ -67,6 +67,7 @@ myclone https://gitlab.edgecenter.io/edgesense/mqttbroker.git
 myclone https://gitlab.edgecenter.io/edgesense/Service-SDK.git
 myclone https://gitlab.edgecenter.io/edgesense/device-net-monitor.git
 myclone https://gitlab.edgecenter.io/edgesense/device-process-monitor.git
+myclone https://gitlab.edgecenter.io/edgesense/device-susi-control.git
 
 myclone https://gitlab.edgecenter.io/edgesense/device-snmp-nms-node.js.git
 
