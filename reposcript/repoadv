@@ -114,6 +114,7 @@ myclone https://gitlab.edgecenter.io/edgesense-open/edgesense-project-docs.git
 function f_ess()
 {
 myclone https://gitlab.edgecenter.io/eiss_cloud_solution_team/node-red.git
+myclone https://gitlab.edgecenter.io/EIoT_Enabling_Team/FaceView/faceview_installer.git
 }
 
 function f_personal()
