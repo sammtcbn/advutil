@@ -109,6 +109,7 @@ myclone https://gitlab.edgecenter.io/edgesense-open/agentlite-node.js.git
 myclone https://gitlab.edgecenter.io/edgesense-open/device-template-node.js.git
 myclone https://gitlab.edgecenter.io/edgesense-open/advsc-binary.git
 myclone https://gitlab.edgecenter.io/edgesense-open/edgesense-project-docs.git
+myclone https://gitlab.edgecenter.io/edgesense-open/uninstalltool-binary.git
 }
 
 function f_ess()
