@@ -6,5 +6,5 @@ apt -y update
 apt -y install mosquitto
 apt -y install mosquitto-clients
 
-apt -y install nodejs
-apt -y install npm
+#apt -y install nodejs
+#apt -y install npm
