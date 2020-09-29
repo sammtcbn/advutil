@@ -25,8 +25,8 @@ function load_favorite_ip()
     fi
 }
 
-function load_advpaasdev() {
-    CFGFILE=~/.config/.advpaasdev
+function load_e2idemo-root() {
+    CFGFILE=~/.config/.mqttadv-e2idemo-root
     if [ -f ${CFGFILE} ]; then
         IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
         ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
@@ -70,7 +70,7 @@ function showmenu()
     echo "bound     = ${bound}"
     echo "topic     = ${topic}"
     echo ""
-    echo "8) load broker setting from advpaasdev"
+    echo "8) load broker setting from e2idemo-root"
     echo "a) bound - 0"
     echo "b) bound - south"
     echo "c) bound - north"
@@ -154,7 +154,7 @@ do
               IP=${HOST5}
             fi
             ;;
-        8) load_advpaasdev;;
+        8) load_e2idemo-root;;
         a) bound=0;;
         b) bound=s;;
         c) bound=n;;
