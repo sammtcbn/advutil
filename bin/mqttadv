@@ -1,6 +1,6 @@
 #!/bin/bash
 # https://github.com/sammtcbn/advutil
-# Written by sammtcbn 2019.11.6
+# Written by sammtcbn 2020.10.1
 
 # support 5 favorite ip , edit ~/.config/.mqttadv , content as below:
 # 172.22.12.228
@@ -25,8 +25,26 @@ function load_favorite_ip()
     fi
 }
 
+function load_deviceon-demo() {
+    CFGFILE=~/.config/.mqttadv-deviceon-demo
+    if [ -f ${CFGFILE} ]; then
+        IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
+        ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        PW=`cat ${CFGFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+    fi
+}
+
 function load_e2idemo-root() {
     CFGFILE=~/.config/.mqttadv-e2idemo-root
+    if [ -f ${CFGFILE} ]; then
+        IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
+        ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
+        PW=`cat ${CFGFILE} | grep PW= | awk 'BEGIN {FS="="}; {print $2}'`
+    fi
+}
+
+function load_e2idemo-sam() {
+    CFGFILE=~/.config/.mqttadv-e2idemo-sam
     if [ -f ${CFGFILE} ]; then
         IP=`cat ${CFGFILE} | grep IP= | awk 'BEGIN {FS="="}; {print $2}'`
         ID=`cat ${CFGFILE} | grep ID= | awk 'BEGIN {FS="="}; {print $2}'`
@@ -70,7 +88,9 @@ function showmenu()
     echo "bound     = ${bound}"
     echo "topic     = ${topic}"
     echo ""
+    echo "7) load broker setting from deviceon-demo"
     echo "8) load broker setting from e2idemo-root"
+    echo "9) load broker setting from e2idemo-sam"
     echo "a) bound - 0"
     echo "b) bound - south"
     echo "c) bound - north"
@@ -154,7 +174,9 @@ do
               IP=${HOST5}
             fi
             ;;
+        7) load_deviceon-demo;;
         8) load_e2idemo-root;;
+        9) load_e2idemo-sam;;
         a) bound=0;;
         b) bound=s;;
         c) bound=n;;
