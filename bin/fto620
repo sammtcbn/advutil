@@ -1,11 +1,17 @@
 #!/bin/bash
 # Send file to 620
+ME=$(basename $0)
 file=${1}
 
 ip=172.22.12.63
 id=linaro
 pw=linaro
 dest=/home/linaro/samdata
+
+function usage() {
+    echo "Usage: ${ME} [file1] [file2] [folder1] [folder2] ..."
+    exit 1
+}
 
 function cmd_exists ()
 {
@@ -16,9 +22,10 @@ function cmd_exists ()
     fi
 }
 
+echo target is ${id}@${ip}:${dest}
+
 if [ -z "${file}" ]; then
-    echo "missing filename"
-    exit -1
+    usage
 fi
 
 for f in $@; do
