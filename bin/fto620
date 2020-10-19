@@ -1,0 +1,42 @@
+#!/bin/bash
+# Send file to 620
+file=${1}
+
+ip=172.22.12.63
+id=linaro
+pw=linaro
+dest=/home/linaro/samdata
+
+function cmd_exists ()
+{
+    if ! type $1> /dev/null 2>&1; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+if [ -z "${file}" ]; then
+    echo "missing filename"
+    exit -1
+fi
+
+for f in $@; do
+    if [[ -d ${f} ]]; then
+        if cmd_exists sshpass ; then
+            sshpass -p ${pw} scp -r $f ${id}@${ip}:${dest}
+        else
+            scp -r $f ${id}@${ip}:${dest}
+        fi
+    elif [[ -f ${f} ]]; then
+        if cmd_exists sshpass ; then
+            sshpass -p ${pw} scp $f ${id}@${ip}:${dest}
+        else
+            scp $f ${id}@${ip}:${dest}
+        fi
+    else
+        echo "$f not found"
+    fi
+done
+
+echo "done"
