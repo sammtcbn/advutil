@@ -86,6 +86,8 @@ myclone https://gitlab.edgecenter.io/edgesense/device-opcua-client-node.js.git
 
 myclone https://gitlab.edgecenter.io/edgesense/device-wascada-handler.git
 
+myclone https://gitlab.edgecenter.io/edgesense/device-alleantia.git
+
 myclone https://gitlab.edgecenter.io/edgesense/poc_battery-app-wpf.git
 myclone https://gitlab.edgecenter.io/edgesense/device-poc_link-mgt-node.js.git
 
