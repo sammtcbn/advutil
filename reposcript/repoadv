@@ -117,6 +117,7 @@ myclone https://gitlab.edgecenter.io/edgesense-open/device-demo-plugin-node.js.g
 myclone https://gitlab.edgecenter.io/edgesense-open/azuretest.git
 myclone https://gitlab.edgecenter.io/edgesense-open/service-ctrl-util-node.js.git
 myclone https://gitlab.edgecenter.io/edgesense-open/edgesense-registry-node.js.git
+myclone https://gitlab.edgecenter.io/edgesense-open/system-info-node.js.git
 }
 
 function f_ess()
