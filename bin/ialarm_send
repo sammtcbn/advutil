@@ -41,6 +41,8 @@ OPTIONS
 
   ex:
       ialarm_send -i 172.22.12.129 -m "test123" -s 3 -t THRESHOLD_CHECK_ERROR
+      ialarm_send -i 172.22.12.63 -a Modbus-Master -m "temperature is too high" -s 3 -t THRESHOLD_CHECK_ERROR
+      ialarm_send -i 172.22.12.63 -a Modbus-Master -m "temperature back to normal" -s 5 -t THRESHOLD_CHECK_INFO
 
 EOF
 )"
