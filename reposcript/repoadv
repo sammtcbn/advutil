@@ -101,6 +101,8 @@ myclone https://gitlab.edgecenter.io/edgesense/DBMService.git
 
 myclone https://gitlab.edgecenter.io/edgesense/grafana.git
 
+myclone https://gitlab.edgecenter.io/edgesense/node-red-es.git
+
 myclone https://gitlab.edgecenter.io/edgesense/uninstalltool.git
 
 }
