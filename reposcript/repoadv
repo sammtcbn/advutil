@@ -121,6 +121,7 @@ myclone https://gitlab.edgecenter.io/edgesense-open/service-ctrl-util-node.js.gi
 myclone https://gitlab.edgecenter.io/edgesense-open/edgesense-registry-node.js.git
 myclone https://gitlab.edgecenter.io/edgesense-open/system-info-node.js.git
 myclone https://gitlab.edgecenter.io/edgesense-open/node-red-preinstall.git
+myclone https://gitlab.edgecenter.io/edgesense-open/nginx-prebuilt.git
 }
 
 function f_ess()
