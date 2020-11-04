@@ -134,6 +134,7 @@ function f_personal()
 myclone https://gitlab.edgecenter.io/Sam35.Lin/advsc_local_unlock_str.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i_plugin_config.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i-pack.git
+myclone https://gitlab.edgecenter.io/Sam35.Lin/device-demo-plugin-node.js-sam.git
 }
 
 function f_github()
