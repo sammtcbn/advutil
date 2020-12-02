@@ -45,7 +45,7 @@ myclone https://gitlab.edgecenter.io/build-common_repo/ei-manifests.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_Installer.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_New_UI.git
-
+myclone https://gitlab.edgecenter.io/wise-agent-core/SouthboundAgent.git
 myclone https://gitlab.edgecenter.io/ei-paas-utility_repo/advtools.git
 }
 
