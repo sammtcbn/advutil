@@ -125,6 +125,7 @@ myclone https://gitlab.edgecenter.io/edgesense-open/system-info-node.js.git
 myclone https://gitlab.edgecenter.io/edgesense-open/node-red-preinstall.git
 myclone https://gitlab.edgecenter.io/edgesense-open/nginx-prebuilt.git
 myclone https://gitlab.edgecenter.io/edgesense-open/epack-demo.git
+myclone https://gitlab.edgecenter.io/edgesense-open/southboundagent-prebuilt.git
 }
 
 function f_ess()
