@@ -106,8 +106,6 @@ myclone https://gitlab.edgecenter.io/edgesense/node-red-es.git
 
 myclone https://gitlab.edgecenter.io/edgesense/uninstalltool.git
 
-myclone https://gitlab.edgecenter.io/edgesense/e2i-edge-packall.git
-
 }
 
 function f_esopen()
@@ -141,6 +139,7 @@ myclone https://gitlab.edgecenter.io/Sam35.Lin/advsc_local_unlock_str.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i_plugin_config.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/device-demo-plugin-node.js-sam.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/az700-installer.git
+myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i-edge-packall.git
 }
 
 function f_github()
