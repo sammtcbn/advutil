@@ -45,6 +45,9 @@ OPTIONS
 
   Example:
      apigwrest -i 172.22.12.156 -c srvlist -u root -w 1234
+     apigwrest -i 172.22.12.156 -c devinfo -u root -w 1234
+     apigwrest -i 172.22.12.156 -c agentst -u root -w 1234
+     apigwrest -i 172.22.12.156 -c agentinfo -u root -w 1234
 EOF
 )"
 
@@ -59,18 +62,18 @@ function f_allsenhublist() {
 }
 
 function f_devinfo() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/device/info | python3 -m json.tool"
+    cmds="curl --user ${HTTP_USER}:${HTTP_PW} -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/device/info | python3 -m json.tool"
     #echo ${cmds}
     eval ${cmds}
 }
 
 function f_agentst() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/status | python3 -m json.tool"
+    cmds="curl --user ${HTTP_USER}:${HTTP_PW} -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/status | python3 -m json.tool"
     eval ${cmds}
 }
 
 function f_agentinfo() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/servicekey | python3 -m json.tool"
+    cmds="curl --user ${HTTP_USER}:${HTTP_PW} -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/servicekey | python3 -m json.tool"
     eval ${cmds}
 }
 
