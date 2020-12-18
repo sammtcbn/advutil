@@ -46,23 +46,23 @@ function usage() {
 }
 
 function f_allsenhublist() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/restapi/WSNManage/SenHub/AllSenHubList | python -m json.tool"
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/restapi/WSNManage/SenHub/AllSenHubList | python3 -m json.tool"
     eval ${cmds}
 }
 
 function f_devinfo() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/device/info | python -m json.tool"
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/device/info | python3 -m json.tool"
     #echo ${cmds}
     eval ${cmds}
 }
 
 function f_agentst() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/status | python -m json.tool"
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/status | python3 -m json.tool"
     eval ${cmds}
 }
 
 function f_agentinfo() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/servicekey | python -m json.tool"
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/wiseagent/servicekey | python3 -m json.tool"
     eval ${cmds}
 }
 
@@ -74,7 +74,7 @@ function f_agentctl() {
 }
 
 function f_srvlist() {
-    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/service/list | python -m json.tool"
+    cmds="curl -s http://${HTTP_IP}:${HTTP_PORT}/rmm/v1/service/list | python3 -m json.tool"
     eval ${cmds}
 }
 
