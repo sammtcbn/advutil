@@ -126,6 +126,8 @@ myclone https://gitlab.edgecenter.io/edgesense-open/nginx-prebuilt.git
 myclone https://gitlab.edgecenter.io/edgesense-open/epack-demo.git
 myclone https://gitlab.edgecenter.io/edgesense-open/southboundagent-prebuilt.git
 myclone https://gitlab.edgecenter.io/edgesense-open/dbms-http-js.git
+myclone https://gitlab.edgecenter.io/edgesense-open/wiseagent-utils-node.js.git
+
 }
 
 function f_ess()
