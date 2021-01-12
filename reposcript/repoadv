@@ -143,6 +143,7 @@ myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i_plugin_config.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/device-demo-plugin-node.js-sam.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/az700-installer.git
 myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i-edge-packall.git
+myclone https://gitlab.edgecenter.io/Sam35.Lin/device-ads-node.js.git
 }
 
 function f_github()
