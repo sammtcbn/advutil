@@ -43,6 +43,7 @@ function f_ag()
 {
 myclone https://gitlab.edgecenter.io/build-common_repo/ei-manifests.git
 myclone https://gitlab.edgecenter.io/ei-paas-rmm_repo/wise-agent-build.git
+myclone https://gitlab.edgecenter.io/ei-paas-rmm_repo/wise-agent-build-server.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_Installer.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_New_UI.git
