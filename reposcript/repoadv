@@ -107,6 +107,8 @@ myclone https://gitlab.edgecenter.io/edgesense/node-red-es.git
 
 myclone https://gitlab.edgecenter.io/edgesense/uninstalltool.git
 
+myclone https://gitlab.edgecenter.io/edgesense/faceview-node.js.git
+
 }
 
 function f_esopen()
