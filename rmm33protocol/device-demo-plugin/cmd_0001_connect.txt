@@ -1,0 +1,19 @@
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentinfoack
+{
+  "susiCommData": {
+    "devID": "DemoPlugin",
+    "hostname": "DemoPlugin",
+    "sn": "",
+    "mac": "",
+    "version": "1.0.1",
+    "type": "Service",
+    "product": "DemoPlugin",
+    "manufacture": "Advantech",
+    "status": 1,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": "1611217979032"
+  }
+}

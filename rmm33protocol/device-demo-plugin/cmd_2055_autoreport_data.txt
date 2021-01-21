@@ -1,0 +1,38 @@
+2021-01-21 16:33:01 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 1
+            },
+            {
+              "n": "Temperature",
+              "v": 24
+            },
+            {
+              "n": "Humidity",
+              "v": 53
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217981991
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217981991
+  }
+}

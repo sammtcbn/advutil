@@ -1,0 +1,9 @@
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "requestID": 1001,
+    "catalogID": 4,
+    "commCmd": 2051,
+    "handlerName": "general"
+  }
+}

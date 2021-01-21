@@ -1,0 +1,21 @@
+2021-01-21 16:33:06 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "catalogID": 4,
+    "autoUploadTimeoutMs": 75000,
+    "requestItems": {
+      "e": [
+        {
+          "n": "DemoPlugin"
+        }
+      ]
+    },
+    "autoUploadIntervalMs": 5000,
+    "commCmd": 533,
+    "agentID": "00000001-0000-0000-0000-525400304051",
+    "handlerName": "DemoPlugin",
+    "sendTS": {
+      "$date": 1611217986807
+    }
+  }
+}

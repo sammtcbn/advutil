@@ -1,0 +1,19 @@
+2021-01-21 16:33:25 topic: /cagent/admin/DemoPlugin/willmessage
+{
+  "susiCommData": {
+    "devID": "DemoPlugin",
+    "hostname": "DemoPlugin",
+    "sn": "",
+    "mac": "",
+    "version": "1.0.1",
+    "type": "Service",
+    "product": "DemoPlugin",
+    "manufacture": "Advantech",
+    "status": 0,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": "1611217978987"
+  }
+}

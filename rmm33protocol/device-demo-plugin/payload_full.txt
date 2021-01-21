@@ -1,0 +1,932 @@
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentinfoack
+{
+  "susiCommData": {
+    "devID": "DemoPlugin",
+    "hostname": "DemoPlugin",
+    "sn": "",
+    "mac": "",
+    "version": "1.0.1",
+    "type": "Service",
+    "product": "DemoPlugin",
+    "manufacture": "Advantech",
+    "status": 1,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": "1611217979032"
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/notify
+{
+  "hb": {
+    "devID": "DemoPlugin"
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentactionreq
+{
+  "susiCommData": {
+    "infoSpec": {
+      "DemoPlugin": {
+        "info": {
+          "bn": "info",
+          "e": [
+            {
+              "n": "type",
+              "sv": "Demo",
+              "asm": "r"
+            },
+            {
+              "n": "name",
+              "sv": "DemoPlugin",
+              "asm": "r"
+            },
+            {
+              "n": "description",
+              "sv": "This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter",
+              "asm": "r"
+            },
+            {
+              "n": "version",
+              "sv": "1.0.1",
+              "asm": "r"
+            },
+            {
+              "n": "selfWeb",
+              "bv": false,
+              "asm": "r"
+            }
+          ]
+        },
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Temperature",
+              "u": "Cel",
+              "v": 26,
+              "min": -40,
+              "max": 120,
+              "asm": "r"
+            },
+            {
+              "n": "Humidity",
+              "u": "%",
+              "v": 65,
+              "min": 0,
+              "max": 100,
+              "asm": "r"
+            },
+            {
+              "n": "Voltage",
+              "u": "V",
+              "v": 12,
+              "min": 10,
+              "max": 15,
+              "asm": "r"
+            },
+            {
+              "n": "Count",
+              "u": "",
+              "v": 0,
+              "asm": "rw"
+            }
+          ]
+        }
+      }
+    },
+    "commCmd": 2052,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217979033
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "requestID": 1001,
+    "catalogID": 4,
+    "commCmd": 2051,
+    "handlerName": "general"
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentactionreq
+{
+  "susiCommData": {
+    "infoSpec": {
+      "DemoPlugin": {
+        "info": {
+          "bn": "info",
+          "e": [
+            {
+              "n": "type",
+              "sv": "Demo",
+              "asm": "r"
+            },
+            {
+              "n": "name",
+              "sv": "DemoPlugin",
+              "asm": "r"
+            },
+            {
+              "n": "description",
+              "sv": "This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter",
+              "asm": "r"
+            },
+            {
+              "n": "version",
+              "sv": "1.0.1",
+              "asm": "r"
+            },
+            {
+              "n": "selfWeb",
+              "bv": false,
+              "asm": "r"
+            }
+          ]
+        },
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Temperature",
+              "u": "Cel",
+              "v": 26,
+              "min": -40,
+              "max": 120,
+              "asm": "r"
+            },
+            {
+              "n": "Humidity",
+              "u": "%",
+              "v": 65,
+              "min": 0,
+              "max": 100,
+              "asm": "r"
+            },
+            {
+              "n": "Voltage",
+              "u": "V",
+              "v": 12,
+              "min": 10,
+              "max": 15,
+              "asm": "r"
+            },
+            {
+              "n": "Count",
+              "u": "",
+              "v": 0,
+              "asm": "rw"
+            }
+          ]
+        }
+      }
+    },
+    "commCmd": 2052,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217979036
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "requestID": 1001,
+    "catalogID": 4,
+    "commCmd": 2051,
+    "handlerName": "general"
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentactionreq
+{
+  "susiCommData": {
+    "infoSpec": {
+      "DemoPlugin": {
+        "info": {
+          "bn": "info",
+          "e": [
+            {
+              "n": "type",
+              "sv": "Demo",
+              "asm": "r"
+            },
+            {
+              "n": "name",
+              "sv": "DemoPlugin",
+              "asm": "r"
+            },
+            {
+              "n": "description",
+              "sv": "This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter",
+              "asm": "r"
+            },
+            {
+              "n": "version",
+              "sv": "1.0.1",
+              "asm": "r"
+            },
+            {
+              "n": "selfWeb",
+              "bv": false,
+              "asm": "r"
+            }
+          ]
+        },
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Temperature",
+              "u": "Cel",
+              "v": 26,
+              "min": -40,
+              "max": 120,
+              "asm": "r"
+            },
+            {
+              "n": "Humidity",
+              "u": "%",
+              "v": 65,
+              "min": 0,
+              "max": 100,
+              "asm": "r"
+            },
+            {
+              "n": "Voltage",
+              "u": "V",
+              "v": 12,
+              "min": 10,
+              "max": 15,
+              "asm": "r"
+            },
+            {
+              "n": "Count",
+              "u": "",
+              "v": 0,
+              "asm": "rw"
+            }
+          ]
+        }
+      }
+    },
+    "commCmd": 2052,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217979037
+  }
+}
+
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "catalogID": 4,
+    "autoUploadIntervalSec": 3,
+    "requestItems": {
+      "ProcessMonitor": {
+        "e": [
+          {
+            "n": "ProcessMonitor/System Monitor Info/availPhysMemKB"
+          },
+          {
+            "n": "ProcessMonitor/System Monitor Info/CPU Usage"
+          },
+          {
+            "n": "ProcessMonitor/System Monitor Info/totalPhysMemKB"
+          }
+        ]
+      }
+    },
+    "commCmd": 2053,
+    "agentID": "00000001-0000-0000-0000-525400304051",
+    "handlerName": "general",
+    "sendTS": {
+      "$date": 1611217877828
+    }
+  }
+}
+
+2021-01-21 16:33:01 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 1
+            },
+            {
+              "n": "Temperature",
+              "v": 24
+            },
+            {
+              "n": "Humidity",
+              "v": 53
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217981991
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217981991
+  }
+}
+
+2021-01-21 16:33:04 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 2
+            },
+            {
+              "n": "Temperature",
+              "v": 24
+            },
+            {
+              "n": "Humidity",
+              "v": 62
+            },
+            {
+              "n": "Voltage",
+              "v": 12.1
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217984989
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217984989
+  }
+}
+
+2021-01-21 16:33:06 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "catalogID": 4,
+    "autoUploadIntervalSec": 3,
+    "requestItems": {
+      "ProcessMonitor": {
+        "e": [
+          {
+            "n": "ProcessMonitor/System Monitor Info/availPhysMemKB"
+          },
+          {
+            "n": "ProcessMonitor/System Monitor Info/CPU Usage"
+          },
+          {
+            "n": "ProcessMonitor/System Monitor Info/totalPhysMemKB"
+          }
+        ]
+      }
+    },
+    "commCmd": 2053,
+    "agentID": "00000001-0000-0000-0000-525400304051",
+    "handlerName": "general",
+    "sendTS": {
+      "$date": 1611217986348
+    }
+  }
+}
+
+2021-01-21 16:33:06 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "catalogID": 4,
+    "autoUploadTimeoutMs": 75000,
+    "requestItems": {
+      "e": [
+        {
+          "n": "DemoPlugin"
+        }
+      ]
+    },
+    "autoUploadIntervalMs": 5000,
+    "commCmd": 533,
+    "agentID": "00000001-0000-0000-0000-525400304051",
+    "handlerName": "DemoPlugin",
+    "sendTS": {
+      "$date": 1611217986807
+    }
+  }
+}
+
+2021-01-21 16:33:07 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 3
+            },
+            {
+              "n": "Temperature",
+              "v": 26
+            },
+            {
+              "n": "Humidity",
+              "v": 52
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217987989
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217987989
+  }
+}
+
+2021-01-21 16:33:10 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 4
+            },
+            {
+              "n": "Temperature",
+              "v": 27
+            },
+            {
+              "n": "Humidity",
+              "v": 75
+            },
+            {
+              "n": "Voltage",
+              "v": 12.1
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217990990
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217990990
+  }
+}
+
+2021-01-21 16:33:11 topic: /cagent/admin/DemoPlugin/agentactionreq
+{
+  "susiCommData": {
+    "DemoPlugin": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "DemoPlugin",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "1.0.1",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+          {
+            "n": "Temperature",
+            "u": "Cel",
+            "v": 27,
+            "min": -40,
+            "max": 120,
+            "asm": "r"
+          },
+          {
+            "n": "Humidity",
+            "u": "%",
+            "v": 75,
+            "min": 0,
+            "max": 100,
+            "asm": "r"
+          },
+          {
+            "n": "Voltage",
+            "u": "V",
+            "v": 12.1,
+            "min": 10,
+            "max": 15,
+            "asm": "r"
+          },
+          {
+            "n": "Count",
+            "u": "",
+            "v": 4,
+            "asm": "rw"
+          }
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "DemoPlugin",
+    "handlerName": "DemoPlugin",
+    "sendTS": 1611217991816
+  }
+}
+
+2021-01-21 16:33:13 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 5
+            },
+            {
+              "n": "Temperature",
+              "v": 26
+            },
+            {
+              "n": "Humidity",
+              "v": 67
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217993991
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217993991
+  }
+}
+
+2021-01-21 16:33:16 topic: /cagent/admin/DemoPlugin/agentactionreq
+{
+  "susiCommData": {
+    "DemoPlugin": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "DemoPlugin",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "1.0.1",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+          {
+            "n": "Temperature",
+            "u": "Cel",
+            "v": 26,
+            "min": -40,
+            "max": 120,
+            "asm": "r"
+          },
+          {
+            "n": "Humidity",
+            "u": "%",
+            "v": 67,
+            "min": 0,
+            "max": 100,
+            "asm": "r"
+          },
+          {
+            "n": "Voltage",
+            "u": "V",
+            "v": 12,
+            "min": 10,
+            "max": 15,
+            "asm": "r"
+          },
+          {
+            "n": "Count",
+            "u": "",
+            "v": 5,
+            "asm": "rw"
+          }
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "DemoPlugin",
+    "handlerName": "DemoPlugin",
+    "sendTS": 1611217996817
+  }
+}
+
+2021-01-21 16:33:16 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 6
+            },
+            {
+              "n": "Temperature",
+              "v": 22
+            },
+            {
+              "n": "Humidity",
+              "v": 75
+            },
+            {
+              "n": "Voltage",
+              "v": 12.1
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217996991
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217996991
+  }
+}
+
+2021-01-21 16:33:19 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 7
+            },
+            {
+              "n": "Temperature",
+              "v": 22
+            },
+            {
+              "n": "Humidity",
+              "v": 51
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611217999992
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611217999992
+  }
+}
+
+2021-01-21 16:33:21 topic: /cagent/admin/DemoPlugin/agentactionreq
+{
+  "susiCommData": {
+    "DemoPlugin": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "DemoPlugin",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "1.0.1",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+          {
+            "n": "Temperature",
+            "u": "Cel",
+            "v": 22,
+            "min": -40,
+            "max": 120,
+            "asm": "r"
+          },
+          {
+            "n": "Humidity",
+            "u": "%",
+            "v": 51,
+            "min": 0,
+            "max": 100,
+            "asm": "r"
+          },
+          {
+            "n": "Voltage",
+            "u": "V",
+            "v": 12,
+            "min": 10,
+            "max": 15,
+            "asm": "r"
+          },
+          {
+            "n": "Count",
+            "u": "",
+            "v": 7,
+            "asm": "rw"
+          }
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "DemoPlugin",
+    "handlerName": "DemoPlugin",
+    "sendTS": 1611218001819
+  }
+}
+
+2021-01-21 16:33:22 topic: /cagent/admin/DemoPlugin/deviceinfo
+{
+  "susiCommData": {
+    "data": {
+      "DemoPlugin": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 8
+            },
+            {
+              "n": "Temperature",
+              "v": 26
+            },
+            {
+              "n": "Humidity",
+              "v": 58
+            },
+            {
+              "n": "Voltage",
+              "v": 12.1
+            }
+          ]
+        },
+        "opTS": {
+          "$date": 1611218002993
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": 1611218002993
+  }
+}
+
+2021-01-21 16:33:25 topic: /cagent/admin/DemoPlugin/willmessage
+{
+  "susiCommData": {
+    "devID": "DemoPlugin",
+    "hostname": "DemoPlugin",
+    "sn": "",
+    "mac": "",
+    "version": "1.0.1",
+    "type": "Service",
+    "product": "DemoPlugin",
+    "manufacture": "Advantech",
+    "status": 0,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "DemoPlugin",
+    "handlerName": "general",
+    "sendTS": "1611217978987"
+  }
+}

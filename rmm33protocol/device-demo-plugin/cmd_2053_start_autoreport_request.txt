@@ -1,0 +1,28 @@
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/agentcallbackreq
+{
+  "susiCommData": {
+    "catalogID": 4,
+    "autoUploadIntervalSec": 3,
+    "requestItems": {
+      "ProcessMonitor": {
+        "e": [
+          {
+            "n": "ProcessMonitor/System Monitor Info/availPhysMemKB"
+          },
+          {
+            "n": "ProcessMonitor/System Monitor Info/CPU Usage"
+          },
+          {
+            "n": "ProcessMonitor/System Monitor Info/totalPhysMemKB"
+          }
+        ]
+      }
+    },
+    "commCmd": 2053,
+    "agentID": "00000001-0000-0000-0000-525400304051",
+    "handlerName": "general",
+    "sendTS": {
+      "$date": 1611217877828
+    }
+  }
+}

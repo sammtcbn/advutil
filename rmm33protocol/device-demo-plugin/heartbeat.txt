@@ -1,0 +1,6 @@
+2021-01-21 16:32:59 topic: /cagent/admin/DemoPlugin/notify
+{
+  "hb": {
+    "devID": "DemoPlugin"
+  }
+}
