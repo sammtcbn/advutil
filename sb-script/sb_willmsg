@@ -2,7 +2,7 @@
 
 source config
 
-TOPIC="/cagent/admin/${HANDLER}/agentinfoack"
+TOPIC="/cagent/admin/${HANDLER}/willmessage"
 
 TS=$(date +%s)000
 

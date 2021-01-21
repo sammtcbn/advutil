@@ -13,7 +13,7 @@ PAYLOAD="$(cat <<-EOF
     "hostname": "${HANDLER}",
     "sn": "",
     "mac": "",
-    "version": "v1.0.1",
+    "version": "${VERSION}",
     "type": "Service",
     "product": "${HANDLER}",
     "manufacture": "Advantech",
