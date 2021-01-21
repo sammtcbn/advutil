@@ -6,23 +6,17 @@ source config
 
 TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
 
-TS=$(date +%s)000
-
-INTERVAL=5000
-TIMEOUT=75000
+INTERVAL=10
 
 USAGE_STR="$(cat <<EOF
 Usage: ${ME} [OPTION]...
 
 OPTIONS
   -s <INTERVAL>
-      assign auto upload interval (ms) , default is ${INTERVAL}
-
-  -t <TIMEOUT>
-      assign auto upload timeout (ms) , default is ${TIMEOUT}
+      assign auto report interval (second) , default is ${INTERVAL}
 
   -h  display this help and exit
- 
+
 EOF
 )"
 
@@ -32,7 +26,7 @@ function usage()
     exit 0
 }
 
-while getopts "s:ht:" opt; do
+while getopts "s:h" opt; do
     case $opt in
     h)
        usage
@@ -40,27 +34,18 @@ while getopts "s:ht:" opt; do
     s)
        INTERVAL=$OPTARG
        ;;
-    t)
-       TIMEOUT=$OPTARG
-       ;;
     esac
 done
 
 PAYLOAD="$(cat <<-EOF
 {
   "susiCommData": {
-    "catalogID": 4,
-    "autoUploadTimeoutMs": ${TIMEOUT},
-    "autoUploadIntervalMs": ${INTERVAL},
-    "requestItems": {
-      "e": [
-        {
-          "n": "${HANDLER}"
-        }
-      ]
-    },
-    "commCmd": 533,
-    "handlerName": "${HANDLER}"
+      "commCmd": 2053,
+      "requestItems": {
+          "All": {}
+      },
+      "autoUploadIntervalSec": ${INTERVAL},
+      "handlerName": "general"
   }
 }
 EOF
