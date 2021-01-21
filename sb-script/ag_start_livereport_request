@@ -1,0 +1,76 @@
+#!/bin/bash
+
+ME=$(basename $0)
+
+source config
+
+TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
+
+TS=$(date +%s)000
+
+INTERVAL=5000
+TIMEOUT=75000
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -s <INTERVAL>
+      assign auto upload interval (ms) , default is ${INTERVAL}
+
+  -t <TIMEOUT>
+      assign auto upload timeout (ms) , default is ${TIMEOUT}
+
+  -h  display this help and exit
+ 
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+while getopts "s:ht:" opt; do
+    case $opt in
+    h)
+       usage
+       ;;
+    s)
+       INTERVAL=$OPTARG
+       ;;
+    t)
+       TIMEOUT=$OPTARG
+       ;;
+    esac
+done
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "catalogID": 4,
+    "autoUploadTimeoutMs": ${TIMEOUT},
+    "autoUploadIntervalMs": ${INTERVAL},
+    "requestItems": {
+      "e": [
+        {
+          "n": "${HANDLER}"
+        }
+      ]
+    },
+    "commCmd": 533,
+    "handlerName": "${HANDLER}",
+    "sendTS": {
+      "$date": ${TS}
+    }
+  }
+}
+EOF
+)"
+
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    echo "error"
+fi
