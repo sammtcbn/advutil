@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source config
+
+TOPIC="/cagent/admin/${HANDLER}/notify"
+
+PAYLOAD="$(cat <<-EOF
+{
+  "hb": {
+    "devID": "${HANDLER}"
+  }
+}
+EOF
+)"
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    echo "error"
+fi
