@@ -2,7 +2,7 @@
 
 source config
 
-TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
+TOPIC="/cagent/admin/${HANDLER}/deviceinfo"
 
 TS=$(date +%s)000
 
