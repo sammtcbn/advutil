@@ -1,0 +1,82 @@
+#!/bin/bash
+
+ME=$(basename $0)
+
+source config
+
+TOPIC="/cagent/admin/${HANDLER}/eventnotify"
+
+TS=$(date +%s)000
+
+SEVERITY=5
+SUBTYPE="THRESHOLD_CHECK_ERROR"
+MSG="test"
+
+USAGE_STR="$(cat <<EOF
+Usage: ${ME} [OPTION]...
+
+OPTIONS
+  -m <MESSAGE>
+      default message is ${MSG}
+
+  -s <SEVERITY>
+      0: Emergency
+      1: Alert
+      2: Critical
+      3: Error
+      4: Warning
+      5: Informational
+      6: Debug
+      default severity is ${SEVERITY}
+
+  -t <SUBTYPE>
+      THRESHOLD_CHECK_INFO
+      THRESHOLD_CHECK_ERROR
+      default is ${SUBTYPE}
+
+  -h  display this help and exit
+
+EOF
+)"
+
+function usage()
+{
+    echo "$USAGE_STR"
+    exit 0
+}
+
+while getopts "m:s:t:h" opt; do
+    case $opt in
+    h)
+       usage
+       ;;
+    m)
+       MSG=$OPTARG
+       ;;
+    s)
+       SEVERITY=$OPTARG
+       ;;
+    t)
+       SUBTYPE=$OPTARG
+       ;;
+    esac
+done
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+      "eventnotify": {
+            "subtype": "${SUBTYPE}",
+            "msg": "${MSG}",
+            "severity": ${SEVERITY},
+            "handler": "${HANDLER}"
+            }
+  }
+}
+EOF
+)"
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    echo "error"
+fi
