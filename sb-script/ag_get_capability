@@ -1,0 +1,24 @@
+#!/bin/bash
+
+source config
+
+TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
+
+TS=$(date +%s)000
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "requestID": 1001,
+    "catalogID": 4,
+    "commCmd": 2051,
+    "handlerName": "general"
+  }
+}
+EOF
+)"
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    echo "error"
+fi
