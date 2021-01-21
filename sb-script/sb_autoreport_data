@@ -1,0 +1,53 @@
+#!/bin/bash
+
+source config
+
+TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
+
+TS=$(date +%s)000
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "data": {
+      "${HANDLER}": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 1
+            },
+            {
+              "n": "Temperature",
+              "v": 24
+            },
+            {
+              "n": "Humidity",
+              "v": 53
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": ${TS}
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    echo "error"
+fi
