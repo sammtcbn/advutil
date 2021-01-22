@@ -6,6 +6,8 @@ source config
 
 TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
 
+TS=$(date +%s)000
+
 INTERVAL=10
 
 USAGE_STR="$(cat <<EOF
@@ -40,12 +42,16 @@ done
 PAYLOAD="$(cat <<-EOF
 {
   "susiCommData": {
+      "catalogID": 4,
       "commCmd": 2053,
       "requestItems": {
           "All": {}
       },
       "autoUploadIntervalSec": ${INTERVAL},
-      "handlerName": "general"
+      "handlerName": "general",
+      "sendTS": {
+          "$date": ${TS}
+      }
   }
 }
 EOF
