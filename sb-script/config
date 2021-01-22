@@ -4,3 +4,5 @@ VERSION="1.0.1"
 DESCRIPTION="This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter"
 
 MQTTIP=localhost
+
+REPORT_INTERVAL=3
