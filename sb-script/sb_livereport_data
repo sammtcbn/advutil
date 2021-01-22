@@ -1,0 +1,92 @@
+#!/bin/bash
+
+source config
+
+TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
+
+TS=$(date +%s)000
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "${HANDLER}": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "${HANDLER}",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "${DESCRIPTION}",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "${VERSION}",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+          {
+            "n": "Temperature",
+            "u": "Cel",
+            "v": 25,
+            "min": -40,
+            "max": 120,
+            "asm": "r"
+          },
+          {
+            "n": "Humidity",
+            "u": "%",
+            "v": 56,
+            "min": 0,
+            "max": 100,
+            "asm": "r"
+          },
+          {
+            "n": "Voltage",
+            "u": "V",
+            "v": 12.1,
+            "min": 10,
+            "max": 15,
+            "asm": "r"
+          },
+          {
+            "n": "Count",
+            "u": "",
+            "v": 4,
+            "asm": "rw"
+          }
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "${HANDLER}",
+    "handlerName": "${HANDLER}",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+if [ $? != 0 ]; then
+    echo "error"
+fi
