@@ -26,6 +26,7 @@ sleep 1
 while true; do
     ./sb_autoreport_data
     ./sb_livereport_data
+    ./sb_willmessage
     sleep ${REPORT_INTERVAL}
 done
 
