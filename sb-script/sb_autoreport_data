@@ -6,6 +6,14 @@ TOPIC="/cagent/admin/${HANDLER}/deviceinfo"
 
 TS=$(date +%s)000
 
+function random_fun()
+{
+    echo $(( ( RANDOM % 99 )  + 1 ))
+}
+
+temperature=$(random_fun)
+humidity=$(random_fun)
+
 PAYLOAD="$(cat <<-EOF
 {
   "susiCommData": {
@@ -20,11 +28,11 @@ PAYLOAD="$(cat <<-EOF
             },
             {
               "n": "Temperature",
-              "v": 24
+              "v": ${temperature}
             },
             {
               "n": "Humidity",
-              "v": 53
+              "v": ${humidity}
             },
             {
               "n": "Voltage",
