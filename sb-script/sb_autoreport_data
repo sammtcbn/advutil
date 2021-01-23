@@ -7,8 +7,7 @@ TOPIC="/cagent/admin/${HANDLER}/deviceinfo"
 
 TS=$(date +%s)000
 
-temperature=$(random_1_to_100)
-humidity=$(random_1_to_100)
+source ${SENSOR_UPDATE_SCRIPT}
 
 function generate_all_sensor_data_payload()
 {
@@ -21,7 +20,7 @@ function generate_all_sensor_data_payload()
         if [ "${SensorType[$i]}" == "v" ]; then
             sensor_payload=$(Gen_Num_Data ${i} ${SensorValue[$i]})
         elif [ "${SensorType[$i]}" == "sv" ]; then
-            sensor_payload=$(Gen_String_Data ${i} ${SensorValue[$i]})
+            sensor_payload=$(Gen_String_Data ${i} "${SensorValue[$i]}")
         fi
 
         if [[ $idx -ne ${TotalSensorNum} ]]; then

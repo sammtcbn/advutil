@@ -7,5 +7,8 @@ MQTTIP=localhost
 
 REPORT_INTERVAL=3
 
-SENSOR_FILE=sensor.csv
-#SENSOR_FILE=sensor2.csv
+SENSOR_FILE=sensorlist1.csv
+SENSOR_UPDATE_SCRIPT=sensorlist1_update_script
+
+#SENSOR_FILE=sensorlist2.csv
+#SENSOR_UPDATE_SCRIPT=sensorlist2_update_script

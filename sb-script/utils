@@ -93,11 +93,18 @@ function Sensor_Array_show()
     done
 }
 
-function Sensor_Value_update()
+function Sensor_Num_Value_update()
 {
     local sensorName=$1
     local sensorVal=$2
     SensorValue[${sensorName}]=${sensorVal}
+}
+
+function Sensor_String_Value_update()
+{
+    local sensorName=$1
+    local sensorVal=$2
+    SensorValue[${sensorName}]="${sensorVal}"
 }
 
 #echo "${SensorType[Temperature]}"

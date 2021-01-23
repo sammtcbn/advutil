@@ -1,0 +1,4 @@
+#!/bin/bash
+
+Sensor_Num_Value_update Temperature $(random_1_to_100)
+Sensor_Num_Value_update Humidity $(random_1_to_100)
