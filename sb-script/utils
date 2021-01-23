@@ -31,6 +31,26 @@ EOF
     echo ${payload}
 }
 
+function Gen_Num_Data()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "v": $2
+EOF
+)"
+    echo ${payload}
+}
+
+function Gen_String_Data()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "sv": "$2"
+EOF
+)"
+    echo ${payload}
+}
+
 function Sensor_Array_load()
 {
     #local sensorfile=sensor.csv

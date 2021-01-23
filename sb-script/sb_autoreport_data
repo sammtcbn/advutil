@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source config
+source utils
 
 TOPIC="/cagent/admin/${HANDLER}/deviceinfo"
 
@@ -9,7 +10,33 @@ TS=$(date +%s)000
 temperature=$(random_1_to_100)
 humidity=$(random_1_to_100)
 
-PAYLOAD="$(cat <<-EOF
+function generate_all_sensor_data_payload()
+{
+    local idx=0
+
+    for i in "${!SensorType[@]}"
+    do
+        idx=$(($idx + 1))
+
+        if [ "${SensorType[$i]}" == "v" ]; then
+            sensor_payload=$(Gen_Num_Data ${i} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "sv" ]; then
+            sensor_payload=$(Gen_String_Data ${i} ${SensorValue[$i]})
+        fi
+
+        if [[ $idx -ne ${TotalSensorNum} ]]; then
+            # is NOT last line
+            fullpayload="{ ${sensor_payload} },"
+        else
+            # IS last line
+            fullpayload="{ ${sensor_payload} }"
+        fi
+
+        echo ${fullpayload}
+done
+}
+
+PAYLOAD_SAMPLE="$(cat <<-EOF
 {
   "susiCommData": {
     "data": {
@@ -50,7 +77,39 @@ PAYLOAD="$(cat <<-EOF
 EOF
 )"
 
-mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
+SENSOR_FULL_PAYLOAD=$(generate_all_sensor_data_payload)
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "data": {
+      "${HANDLER}": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+${SENSOR_FULL_PAYLOAD}
+          ]
+        },
+        "opTS": {
+          "$date": ${TS}
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+#echo "${PAYLOAD_SAMPLE}"
+echo "${PAYLOAD}"
+
+#mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD_SAMPLE}"
+#mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
 if [ $? != 0 ]; then
     echo "error"
 fi
