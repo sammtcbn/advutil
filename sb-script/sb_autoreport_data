@@ -6,13 +6,8 @@ TOPIC="/cagent/admin/${HANDLER}/deviceinfo"
 
 TS=$(date +%s)000
 
-function random_fun()
-{
-    echo $(( ( RANDOM % 99 )  + 1 ))
-}
-
-temperature=$(random_fun)
-humidity=$(random_fun)
+temperature=$(random_1_to_100)
+humidity=$(random_1_to_100)
 
 PAYLOAD="$(cat <<-EOF
 {

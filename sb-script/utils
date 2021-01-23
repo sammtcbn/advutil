@@ -4,6 +4,11 @@ declare -A SensorType
 declare -A SensorAccess
 declare -A SensorValue
 
+function random_1_to_100()
+{
+    echo $(( ( RANDOM % 99 )  + 1 ))
+}
+
 function Gen_Num_Capability()
 {
     local payload="$(cat <<-EOF
