@@ -1,0 +1,4 @@
+Time,sv,r,2021-1-22
+Temperature,v,r,2
+Humidity,v,rw,0
+HDD_Available_Size,sv,r,0

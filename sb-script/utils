@@ -1,0 +1,94 @@
+#!/bin/bash
+
+declare -A SensorType
+declare -A SensorAccess
+declare -A SensorValue
+
+function Gen_Num_Capability()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "asm": "$2",
+              "v": $3
+EOF
+)"
+    echo ${payload}
+}
+
+function Gen_String_Capability()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "asm": "$2",
+              "sv": "$3"
+EOF
+)"
+    echo ${payload}
+}
+
+function Sensor_Array_load()
+{
+    #local sensorfile=sensor.csv
+    local sensorfile=`cat config | grep SENSOR_FILE= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
+    #echo sensorfile is ${sensorfile}
+    local last_line=$(wc -l < ${sensorfile})
+    #echo "total line is $last_line"
+    local current_line=0
+
+while IFS=, read -r sensorName sensorType sensorAccess sensorValue
+do
+    current_line=$(($current_line + 1))
+
+    SensorType[${sensorName}]=${sensorType}
+    SensorAccess[${sensorName}]=${sensorAccess}
+    SensorValue[${sensorName}]=${sensorValue}
+
+    if [[ $current_line -ne $last_line ]]; then
+        # is NOT last line
+        :
+    else
+        # IS last line
+        :
+    fi
+
+done < ${sensorfile}
+}
+
+Sensor_Array_load
+
+TotalSensorNum=${#SensorType[@]}
+
+function Sensor_Array_show()
+{
+    echo "total key is ${TotalSensorNum}"
+
+    for i in "${!SensorType[@]}"
+    do
+        echo "SensorName=$i , SensorType=${SensorType[$i]} , SensorAccess=${SensorAccess[$i]} , SensorValue=${SensorValue[$i]}"
+    done
+}
+
+#echo "${SensorType[Temperature]}"
+#echo "${SensorAccess[Temperature]}"
+#echo "${SensorValue[Temperature]}"
+
+#echo "${SensorType[Humidity]}"
+#echo "${SensorAccess[Humidity]}"
+#echo "${SensorValue[Humidity]}"
+
+#echo "SensorType all key: ${!SensorType[@]}"
+#echo "SensorType all element: ${SensorType[*]}"
+
+#echo "TotalSensorNum is ${TotalSensorNum}"
+
+
+function mqtt_pub()
+{
+    local mqttip=`cat config | grep MQTTIP= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
+    local topic=$1
+    local payload=$2
+    mosquitto_pub -h ${mqttip} -t ${TOPIC} -d -m "${payload}"
+    if [ $? != 0 ]; then
+        echo "Failed to mosquitto_pub"
+    fi
+}

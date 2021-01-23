@@ -6,3 +6,6 @@ DESCRIPTION="This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Volta
 MQTTIP=localhost
 
 REPORT_INTERVAL=3
+
+SENSOR_FILE=sensor.csv
+#SENSOR_FILE=sensor2.csv
