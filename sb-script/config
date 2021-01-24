@@ -1,6 +1,7 @@
 #!/bin/bash
 HANDLER="DemoPlugin"
 VERSION="1.0.1"
+MANUFACTURE=Advantech
 DESCRIPTION="This is a demo plug-in - with 1. Temperature, 2. Humidity, 3. Voltage and 4. Counter"
 
 MQTTIP=localhost
@@ -12,3 +13,5 @@ SENSOR_UPDATE_SCRIPT=sensorlist1_update_script
 
 #SENSOR_FILE=sensorlist2.csv
 #SENSOR_UPDATE_SCRIPT=sensorlist2_update_script
+
+DEBUG_MQTT_MSG=Y

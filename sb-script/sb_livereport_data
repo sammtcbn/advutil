@@ -168,10 +168,5 @@ ${SENSOR_FULL_PAYLOAD}
 EOF
 )"
 
-#echo "${PAYLOAD_SAMPLE}"
-#mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD_SAMPLE}"
-#echo "${PAYLOAD}"
-mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
-if [ $? != 0 ]; then
-    echo "error"
-fi
+#mqtt_pub ${TOPIC} "${PAYLOAD_SAMPLE}"
+mqtt_pub ${TOPIC} "${PAYLOAD}"

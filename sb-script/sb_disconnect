@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source config
+source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentinfoack"
 
@@ -16,7 +17,7 @@ PAYLOAD="$(cat <<-EOF
     "version": "${VERSION}",
     "type": "Service",
     "product": "${HANDLER}",
-    "manufacture": "Advantech",
+    "manufacture": "${MANUFACTURE}",
     "status": 0,
     "commCmd": 1,
     "requestID": 21,
@@ -28,7 +29,4 @@ PAYLOAD="$(cat <<-EOF
 EOF
 )"
 
-mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
-if [ $? != 0 ]; then
-    echo "error"
-fi
+mqtt_pub ${TOPIC} "${PAYLOAD}"
