@@ -134,6 +134,7 @@ function mqtt_pub()
             echo ${payload} | json_pp
         fi
     fi
+    return 0
     mosquitto_pub -h ${mqttip} -t ${TOPIC} -d -m "${payload}"
     if [ $? != 0 ]; then
         echo "Failed to mosquitto_pub"

@@ -3,6 +3,7 @@
 ME=$(basename $0)
 
 source config
+source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
 

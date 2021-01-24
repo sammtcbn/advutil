@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source config
+source utils
 
 TOPIC="/cagent/admin/${HANDLER}/willmessage"
 
