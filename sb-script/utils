@@ -130,7 +130,7 @@ function mqtt_pub()
 {
     local mqttip=`cat config | grep MQTTIP= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
     local debug_mqtt_msg=`cat config | grep DEBUG_MQTT_MSG= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
-    local debug_mqtt_not_pub==`cat config | grep DEBUG_MQTT_NOT_PUB= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
+    local debug_mqtt_not_pub=`cat config | grep DEBUG_MQTT_NOT_PUB= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
     local topic=$1
     local payload=$2
 
