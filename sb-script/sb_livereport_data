@@ -20,7 +20,7 @@ function generate_all_sensor_live_payload()
         if [ "${SensorType[$i]}" == "v" ]; then
             sensor_payload=$(Gen_Num_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
         elif [ "${SensorType[$i]}" == "sv" ]; then
-            sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+            sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} "${SensorValue[$i]}")
         fi
 
         if [[ $idx -ne ${TotalSensorNum} ]]; then
