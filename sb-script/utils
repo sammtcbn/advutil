@@ -130,8 +130,10 @@ function mqtt_pub()
 {
     local mqttip=`cat config | grep MQTTIP= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
     local debug_mqtt_msg=`cat config | grep DEBUG_MQTT_MSG= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
+    local debug_mqtt_not_pub==`cat config | grep DEBUG_MQTT_NOT_PUB= | grep "^[^#;]" | awk 'BEGIN {FS="="}; {print $2}'`
     local topic=$1
     local payload=$2
+
     if [ ! -z "${debug_mqtt_msg}" ]; then
         if [ "${debug_mqtt_msg}" == "y" ] || [ "${debug_mqtt_msg}" == "Y" ]; then
             echo ${TOPIC}
@@ -139,7 +141,13 @@ function mqtt_pub()
             echo ${payload} | json_pp
         fi
     fi
-    return 0
+
+    if [ ! -z "${debug_mqtt_not_pub}" ]; then
+        if [ "${debug_mqtt_not_pub}" == "y" ] || [ "${debug_mqtt_not_pub}" == "Y" ]; then
+            return 0
+        fi
+    fi
+
     mosquitto_pub -h ${mqttip} -t ${TOPIC} -d -m "${payload}"
     if [ $? != 0 ]; then
         echo "Failed to mosquitto_pub"

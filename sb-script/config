@@ -14,4 +14,5 @@ SENSOR_UPDATE_SCRIPT=sensorlist1_update_script
 #SENSOR_FILE=sensorlist2.csv
 #SENSOR_UPDATE_SCRIPT=sensorlist2_update_script
 
-#DEBUG_MQTT_MSG=Y
+#DEBUG_MQTT_MSG=y
+#DEBUG_MQTT_NOT_PUB=y
