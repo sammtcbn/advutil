@@ -5,8 +5,6 @@ source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
 
-TS=$(date +%s)000
-
 PAYLOAD="$(cat <<-EOF
 {
   "susiCommData": {

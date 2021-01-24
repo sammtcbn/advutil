@@ -5,7 +5,7 @@ source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
 
-TS=$(date +%s)000
+TS=$(Gen_TS)
 
 source ${SENSOR_UPDATE_SCRIPT}
 

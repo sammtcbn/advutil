@@ -20,6 +20,11 @@ EOF
     echo ${payload}
 }
 
+function Gen_TS()
+{
+    echo $(($(date +%s%N)/1000000))
+}
+
 function Gen_String_Capability()
 {
     local payload="$(cat <<-EOF

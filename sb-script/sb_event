@@ -7,7 +7,7 @@ source utils
 
 TOPIC="/cagent/admin/${HANDLER}/eventnotify"
 
-TS=$(date +%s)000
+TS=$(Gen_TS)
 
 SEVERITY=5
 SUBTYPE="THRESHOLD_CHECK_ERROR"

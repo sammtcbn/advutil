@@ -5,7 +5,7 @@ source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentinfoack"
 
-TS=$(date +%s)000
+TS=$(Gen_TS)
 
 PAYLOAD="$(cat <<-EOF
 {

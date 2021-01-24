@@ -7,7 +7,7 @@ source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
 
-TS=$(date +%s)000
+TS=$(Gen_TS)
 
 INTERVAL=10
 

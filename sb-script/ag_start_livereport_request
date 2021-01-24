@@ -7,8 +7,6 @@ source utils
 
 TOPIC="/cagent/admin/${HANDLER}/agentcallbackreq"
 
-TS=$(date +%s)000
-
 INTERVAL=5000
 TIMEOUT=75000
 
