@@ -7,10 +7,35 @@ TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
 
 TS=$(date +%s)000
 
-temperature=$(random_1_to_100)
-humidity=$(random_1_to_100)
+source ${SENSOR_UPDATE_SCRIPT}
 
-PAYLOAD="$(cat <<-EOF
+function generate_all_sensor_live_payload()
+{
+    local idx=0
+
+    for i in "${!SensorType[@]}"
+    do
+        idx=$(($idx + 1))
+
+        if [ "${SensorType[$i]}" == "v" ]; then
+            sensor_payload=$(Gen_Num_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "sv" ]; then
+            sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        fi
+
+        if [[ $idx -ne ${TotalSensorNum} ]]; then
+            # is NOT last line
+            fullpayload="{ ${sensor_payload} },"
+        else
+            # IS last line
+            fullpayload="{ ${sensor_payload} }"
+        fi
+
+        echo ${fullpayload}
+done
+}
+
+PAYLOAD_SAMPLE="$(cat <<-EOF
 {
   "susiCommData": {
     "${HANDLER}": {
@@ -90,6 +115,62 @@ PAYLOAD="$(cat <<-EOF
 EOF
 )"
 
+SENSOR_FULL_PAYLOAD=$(generate_all_sensor_live_payload)
+
+PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "${HANDLER}": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "${HANDLER}",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "${DESCRIPTION}",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "${VERSION}",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+${SENSOR_FULL_PAYLOAD}
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "${HANDLER}",
+    "handlerName": "${HANDLER}",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+#echo "${PAYLOAD_SAMPLE}"
+#mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD_SAMPLE}"
+#echo "${PAYLOAD}"
 mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${PAYLOAD}"
 if [ $? != 0 ]; then
     echo "error"
