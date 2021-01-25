@@ -37,6 +37,11 @@ function mqtt_pub()
     return 0
 }
 
+function Gen_TS()
+{
+    echo $(($(date +%s%N)/1000000))
+}
+
 function Gen_Num_Capability()
 {
     local payload="$(cat <<-EOF
@@ -48,9 +53,15 @@ EOF
     echo ${payload}
 }
 
-function Gen_TS()
+function Gen_Bool_Capability()
 {
-    echo $(($(date +%s%N)/1000000))
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "asm": "$2",
+              "bv": $3
+EOF
+)"
+    echo ${payload}
 }
 
 function Gen_String_Capability()
@@ -69,6 +80,16 @@ function Gen_Num_Data()
     local payload="$(cat <<-EOF
               "n": "$1",
               "v": $2
+EOF
+)"
+    echo ${payload}
+}
+
+function Gen_Bool_Data()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "bv": $2
 EOF
 )"
     echo ${payload}
