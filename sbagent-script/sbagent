@@ -147,6 +147,13 @@ function Sensor_Num_Value_update()
     SensorValue[${sensorName}]=${sensorVal}
 }
 
+function Sensor_Bool_Value_update()
+{
+    local sensorName=$1
+    local sensorVal=$2
+    SensorValue[${sensorName}]=${sensorVal}
+}
+
 function Sensor_String_Value_update()
 {
     local sensorName=$1
@@ -293,6 +300,8 @@ function generate_all_sensor_capability_payload()
 
         if [ "${SensorType[$i]}" == "v" ]; then
             sensor_payload=$(Gen_Num_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "bv" ]; then
+            sensor_payload=$(Gen_Bool_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
         elif [ "${SensorType[$i]}" == "sv" ]; then
             sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
         fi
@@ -470,6 +479,8 @@ function generate_all_sensor_live_payload()
 
         if [ "${SensorType[$i]}" == "v" ]; then
             sensor_payload=$(Gen_Num_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "bv" ]; then
+            sensor_payload=$(Gen_Bool_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
         elif [ "${SensorType[$i]}" == "sv" ]; then
             sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} "${SensorValue[$i]}")
         fi
@@ -643,6 +654,8 @@ function generate_all_sensor_data_payload()
 
         if [ "${SensorType[$i]}" == "v" ]; then
             sensor_payload=$(Gen_Num_Data ${i} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "bv" ]; then
+            sensor_payload=$(Gen_Bool_Data ${i} ${SensorValue[$i]})
         elif [ "${SensorType[$i]}" == "sv" ]; then
             sensor_payload=$(Gen_String_Data ${i} "${SensorValue[$i]}")
         fi
