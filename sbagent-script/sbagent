@@ -1,0 +1,803 @@
+#!/bin/bash
+
+source config
+
+declare -A SensorType
+declare -A SensorAccess
+declare -A SensorValue
+
+# ------------------------------------------
+# util function
+# ------------------------------------------
+
+function mqtt_pub()
+{
+    local topic=$1
+    local payload=$2
+
+    if [ ! -z "${DEBUG_MQTT_MSG}" ]; then
+        if [ "${DEBUG_MQTT_MSG}" == "y" ] || [ "${DEBUG_MQTT_MSG}" == "Y" ]; then
+            echo ${TOPIC}
+            #echo ${payload}
+            echo ${payload} | json_pp
+        fi
+    fi
+
+    if [ ! -z "${DEBUG_MQTT_NOT_PUB}" ]; then
+        if [ "${DEBUG_MQTT_NOT_PUB}" == "y" ] || [ "${DEBUG_MQTT_NOT_PUB}" == "Y" ]; then
+            return 0
+        fi
+    fi
+
+    mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${payload}"
+    if [ $? != 0 ]; then
+        echo "Failed to mosquitto_pub"
+        return 1
+    fi
+    return 0
+}
+
+function Gen_Num_Capability()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "asm": "$2",
+              "v": $3
+EOF
+)"
+    echo ${payload}
+}
+
+function Gen_TS()
+{
+    echo $(($(date +%s%N)/1000000))
+}
+
+function Gen_String_Capability()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "asm": "$2",
+              "sv": "$3"
+EOF
+)"
+    echo ${payload}
+}
+
+function Gen_Num_Data()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "v": $2
+EOF
+)"
+    echo ${payload}
+}
+
+function Gen_String_Data()
+{
+    local payload="$(cat <<-EOF
+              "n": "$1",
+              "sv": "$2"
+EOF
+)"
+    echo ${payload}
+}
+
+function Sensor_Array_load()
+{
+    local last_line=$(wc -l < ${SENSOR_FILE})
+    #echo "total line is $last_line"
+    local current_line=0
+
+while IFS=, read -r sensorName sensorType sensorAccess sensorValue
+do
+    current_line=$(($current_line + 1))
+
+    SensorType[${sensorName}]=${sensorType}
+    SensorAccess[${sensorName}]=${sensorAccess}
+    SensorValue[${sensorName}]=${sensorValue}
+
+    if [[ $current_line -ne $last_line ]]; then
+        # is NOT last line
+        :
+    else
+        # IS last line
+        :
+    fi
+
+done < ${sensorfile}
+}
+
+function Sensor_Array_show()
+{
+    echo "total key is ${TotalSensorNum}"
+
+    for i in "${!SensorType[@]}"
+    do
+        echo "SensorName=$i , SensorType=${SensorType[$i]} , SensorAccess=${SensorAccess[$i]} , SensorValue=${SensorValue[$i]}"
+    done
+}
+
+function Sensor_Num_Value_update()
+{
+    local sensorName=$1
+    local sensorVal=$2
+    SensorValue[${sensorName}]=${sensorVal}
+}
+
+function Sensor_String_Value_update()
+{
+    local sensorName=$1
+    local sensorVal=$2
+    SensorValue[${sensorName}]="${sensorVal}"
+}
+
+# ------------------------------------------
+# connect
+# ------------------------------------------
+
+function sb_connect()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/agentinfoack"
+
+    local TS=$(Gen_TS)
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "devID": "${HANDLER}",
+    "hostname": "${HANDLER}",
+    "sn": "",
+    "mac": "",
+    "version": "${VERSION}",
+    "type": "Service",
+    "product": "${HANDLER}",
+    "manufacture": "${MANUFACTURE}",
+    "status": 1,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# disconnect
+# ------------------------------------------
+
+function sb_disconnect()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/agentinfoack"
+
+    local TS=$(Gen_TS)
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "devID": "${HANDLER}",
+    "hostname": "${HANDLER}",
+    "sn": "",
+    "mac": "",
+    "version": "${VERSION}",
+    "type": "Service",
+    "product": "${HANDLER}",
+    "manufacture": "${MANUFACTURE}",
+    "status": 0,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# heartbeat
+# ------------------------------------------
+
+function sb_heartbeat()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/notify"
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "hb": {
+    "devID": "${HANDLER}"
+  }
+}
+EOF
+)"
+
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# willmessage
+# ------------------------------------------
+
+function sb_willmessage()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/willmessage"
+
+    local TS=$(Gen_TS)
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "devID": "${HANDLER}",
+    "hostname": "${HANDLER}",
+    "sn": "",
+    "mac": "",
+    "version": "${VERSION}",
+    "type": "Service",
+    "product": "${HANDLER}",
+    "manufacture": "${MANUFACTURE}",
+    "status": 0,
+    "commCmd": 1,
+    "requestID": 21,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# capability
+# ------------------------------------------
+
+function generate_all_sensor_capability_payload()
+{
+    local idx=0
+
+    for i in "${!SensorType[@]}"
+    do
+        idx=$(($idx + 1))
+
+        if [ "${SensorType[$i]}" == "v" ]; then
+            sensor_payload=$(Gen_Num_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "sv" ]; then
+            sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        fi
+
+        if [[ $idx -ne ${TotalSensorNum} ]]; then
+            # is NOT last line
+            fullpayload="{ ${sensor_payload} },"
+        else
+            # IS last line
+            fullpayload="{ ${sensor_payload} }"
+        fi
+
+        echo ${fullpayload}
+done
+}
+
+function sb_capability()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
+
+    local TS=$(Gen_TS)
+
+local PAYLOAD_SAMPLE="$(cat <<-EOF
+{
+  "susiCommData": {
+    "infoSpec": {
+      "${HANDLER}": {
+        "info": {
+          "bn": "info",
+          "e": [
+            {
+              "n": "type",
+              "sv": "Demo",
+              "asm": "r"
+            },
+            {
+              "n": "name",
+              "sv": "${HANDLER}",
+              "asm": "r"
+            },
+            {
+              "n": "description",
+              "sv": "${DESCRIPTION}",
+              "asm": "r"
+            },
+            {
+              "n": "version",
+              "sv": "${VERSION}",
+              "asm": "r"
+            },
+            {
+              "n": "selfWeb",
+              "bv": false,
+              "asm": "r"
+            }
+          ]
+        },
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Temperature",
+              "u": "Cel",
+              "v": 26,
+              "min": -40,
+              "max": 120,
+              "asm": "r"
+            },
+            {
+              "n": "Humidity",
+              "u": "%",
+              "v": 65,
+              "min": 0,
+              "max": 100,
+              "asm": "r"
+            },
+            {
+              "n": "Voltage",
+              "u": "V",
+              "v": 12,
+              "min": 10,
+              "max": 15,
+              "asm": "r"
+            },
+            {
+              "n": "Count",
+              "u": "",
+              "v": 0,
+              "asm": "rw"
+            }
+          ]
+        }
+      }
+    },
+    "commCmd": 2052,
+    "requestID": 2001,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    local SENSOR_FULL_PAYLOAD=$(generate_all_sensor_capability_payload)
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "infoSpec": {
+      "${HANDLER}": {
+        "info": {
+          "bn": "info",
+          "e": [
+            {
+              "n": "type",
+              "sv": "Demo",
+              "asm": "r"
+            },
+            {
+              "n": "name",
+              "sv": "${HANDLER}",
+              "asm": "r"
+            },
+            {
+              "n": "description",
+              "sv": "${DESCRIPTION}",
+              "asm": "r"
+            },
+            {
+              "n": "version",
+              "sv": "${VERSION}",
+              "asm": "r"
+            },
+            {
+              "n": "selfWeb",
+              "bv": false,
+              "asm": "r"
+            }
+          ]
+        },
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+${SENSOR_FULL_PAYLOAD}
+          ]
+        }
+      }
+    },
+    "commCmd": 2052,
+    "requestID": 2001,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    #mqtt_pub ${TOPIC} "${PAYLOAD_SAMPLE}"
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# live report data
+# ------------------------------------------
+
+function generate_all_sensor_live_payload()
+{
+    local idx=0
+
+    for i in "${!SensorType[@]}"
+    do
+        idx=$(($idx + 1))
+
+        if [ "${SensorType[$i]}" == "v" ]; then
+            sensor_payload=$(Gen_Num_Capability ${i} ${SensorAccess[$i]} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "sv" ]; then
+            sensor_payload=$(Gen_String_Capability ${i} ${SensorAccess[$i]} "${SensorValue[$i]}")
+        fi
+
+        if [[ $idx -ne ${TotalSensorNum} ]]; then
+            # is NOT last line
+            fullpayload="{ ${sensor_payload} },"
+        else
+            # IS last line
+            fullpayload="{ ${sensor_payload} }"
+        fi
+
+        echo ${fullpayload}
+done
+}
+
+function sb_live_report_data()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/agentactionreq"
+
+    local TS=$(Gen_TS)
+
+local PAYLOAD_SAMPLE="$(cat <<-EOF
+{
+  "susiCommData": {
+    "${HANDLER}": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "${HANDLER}",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "${DESCRIPTION}",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "${VERSION}",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+          {
+            "n": "Temperature",
+            "u": "Cel",
+            "v": ${temperature},
+            "min": -40,
+            "max": 120,
+            "asm": "r"
+          },
+          {
+            "n": "Humidity",
+            "u": "%",
+            "v": ${humidity},
+            "min": 0,
+            "max": 100,
+            "asm": "r"
+          },
+          {
+            "n": "Voltage",
+            "u": "V",
+            "v": 12.1,
+            "min": 10,
+            "max": 15,
+            "asm": "r"
+          },
+          {
+            "n": "Count",
+            "u": "",
+            "v": 4,
+            "asm": "rw"
+          }
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "${HANDLER}",
+    "handlerName": "${HANDLER}",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    local SENSOR_FULL_PAYLOAD=$(generate_all_sensor_live_payload)
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "${HANDLER}": {
+      "info": {
+        "bn": "info",
+        "e": [
+          {
+            "n": "type",
+            "sv": "Demo",
+            "asm": "r"
+          },
+          {
+            "n": "name",
+            "sv": "${HANDLER}",
+            "asm": "r"
+          },
+          {
+            "n": "description",
+            "sv": "${DESCRIPTION}",
+            "asm": "r"
+          },
+          {
+            "n": "version",
+            "sv": "${VERSION}",
+            "asm": "r"
+          },
+          {
+            "n": "selfWeb",
+            "bv": false,
+            "asm": "r"
+          }
+        ]
+      },
+      "SenData": {
+        "bn": "SenData",
+        "e": [
+${SENSOR_FULL_PAYLOAD}
+        ]
+      }
+    },
+    "commCmd": 534,
+    "requestID": 30002,
+    "agentID": "${HANDLER}",
+    "handlerName": "${HANDLER}",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    #mqtt_pub ${TOPIC} "${PAYLOAD_SAMPLE}"
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# auto report data
+# ------------------------------------------
+
+function generate_all_sensor_data_payload()
+{
+    local idx=0
+
+    for i in "${!SensorType[@]}"
+    do
+        idx=$(($idx + 1))
+
+        if [ "${SensorType[$i]}" == "v" ]; then
+            sensor_payload=$(Gen_Num_Data ${i} ${SensorValue[$i]})
+        elif [ "${SensorType[$i]}" == "sv" ]; then
+            sensor_payload=$(Gen_String_Data ${i} "${SensorValue[$i]}")
+        fi
+
+        if [[ $idx -ne ${TotalSensorNum} ]]; then
+            # is NOT last line
+            fullpayload="{ ${sensor_payload} },"
+        else
+            # IS last line
+            fullpayload="{ ${sensor_payload} }"
+        fi
+
+        echo ${fullpayload}
+done
+}
+
+function sb_auto_report_data()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/deviceinfo"
+
+    local TS=$(Gen_TS)
+
+local PAYLOAD_SAMPLE="$(cat <<-EOF
+{
+  "susiCommData": {
+    "data": {
+      "${HANDLER}": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+            {
+              "n": "Count",
+              "v": 1
+            },
+            {
+              "n": "Temperature",
+              "v": ${temperature}
+            },
+            {
+              "n": "Humidity",
+              "v": ${humidity}
+            },
+            {
+              "n": "Voltage",
+              "v": 12
+            }
+          ]
+        },
+        "opTS": {
+          "$date": ${TS}
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    local SENSOR_FULL_PAYLOAD=$(generate_all_sensor_data_payload)
+
+local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+    "data": {
+      "${HANDLER}": {
+        "SenData": {
+          "bn": "SenData",
+          "e": [
+${SENSOR_FULL_PAYLOAD}
+          ]
+        },
+        "opTS": {
+          "$date": ${TS}
+        }
+      }
+    },
+    "commCmd": 2055,
+    "requestID": 2001,
+    "agentID": "${HANDLER}",
+    "handlerName": "general",
+    "sendTS": ${TS}
+  }
+}
+EOF
+)"
+
+    #mqtt_pub ${TOPIC} "${PAYLOAD_SAMPLE}"
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# event
+# ------------------------------------------
+
+# SEVERITY
+#      0: Emergency
+#      1: Alert
+#      2: Critical
+#      3: Error
+#      4: Warning
+#      5: Informational
+#      6: Debug
+
+# SUBTYPE
+#      THRESHOLD_CHECK_INFO
+#      THRESHOLD_CHECK_ERROR
+	  
+function sb_event()
+{
+    local TOPIC="/cagent/admin/${HANDLER}/eventnotify"
+
+    local TS=$(Gen_TS)
+
+    #local SEVERITY=5
+    #local SUBTYPE="THRESHOLD_CHECK_ERROR"
+    #local MSG="test"
+
+    local SEVERITY=$1
+    local SUBTYPE=$2
+	local MSG=$3
+	
+    local PAYLOAD="$(cat <<-EOF
+{
+  "susiCommData": {
+      "eventnotify": {
+            "subtype": "${SUBTYPE}",
+            "msg": "${MSG}",
+            "severity": ${SEVERITY},
+            "handler": "${HANDLER}"
+            }
+  }
+}
+EOF
+)"
+
+    mqtt_pub ${TOPIC} "${PAYLOAD}"
+}
+
+# ------------------------------------------
+# main
+# ------------------------------------------
+
+function clean_up ()
+{
+    echo exit
+    exit
+}
+
+trap clean_up SIGHUP SIGINT SIGTERM
+
+Sensor_Array_load
+TotalSensorNum=${#SensorType[@]}
+
+sb_connect
+sleep 1
+
+sb_capability
+sleep 1
+
+#sb_capability
+#sleep 1
+
+while true; do    
+    sb_willmessage
+	sb_heartbeat
+	source ${SENSOR_UPDATE_SCRIPT}
+	sb_auto_report_data
+    sb_live_report_data
+    sleep ${REPORT_INTERVAL}
+done
+
+sb_disconnect
+
+echo bye

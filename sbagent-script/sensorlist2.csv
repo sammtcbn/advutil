@@ -1,0 +1,4 @@
+Host_Name,sv,r,none
+System_Current_Time,sv,r,
+System_Up_Time,sv,r,
+HDD_Available_Size,sv,r,0G

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+function random_gen()
+{
+    echo $(( ( RANDOM % 99 )  + 1 ))
+}
+
+Sensor_Num_Value_update Temperature $(random_gen)
+Sensor_Num_Value_update Humidity $(random_gen)
