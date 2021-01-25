@@ -772,7 +772,7 @@ EOF
 function post_action()
 {
     if [ ! -z "${POST_SCRIPT}" ]; then
-        sh ${POST_SCRIPT}
+        ("./$POST_SCRIPT")
     fi
 }
 
