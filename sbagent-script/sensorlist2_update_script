@@ -12,6 +12,7 @@ function is_service_running ()
 }
 
 Sensor_String_Value_update Host_Name "$(hostname)"
+Sensor_String_Value_update Linux_Kernel_Version "$(uname -r)"
 Sensor_String_Value_update System_Current_Time "$(date '+%Y-%m-%d %H:%M:%S')"
 Sensor_String_Value_update System_Up_Time "$(uptime -s)"
 Sensor_String_Value_update HDD_Available_Size "$(df -h --output=avail / | tail -n1 | xargs)"

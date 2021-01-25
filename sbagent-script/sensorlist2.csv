@@ -1,4 +1,5 @@
 Host_Name,sv,r,none
+Linux_Kernel_Version,sv,r,
 System_Current_Time,sv,r,
 System_Up_Time,sv,r,
 HDD_Available_Size,sv,r,0G
