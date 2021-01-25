@@ -115,9 +115,11 @@ while IFS=, read -r sensorName sensorType sensorAccess sensorValue
 do
     current_line=$(($current_line + 1))
 
-    SensorType[${sensorName}]=${sensorType}
-    SensorAccess[${sensorName}]=${sensorAccess}
-    SensorValue[${sensorName}]=${sensorValue}
+    if [ "${sensorName:0:1}" != "#" ]; then
+        SensorType[${sensorName}]=${sensorType}
+        SensorAccess[${sensorName}]=${sensorAccess}
+        SensorValue[${sensorName}]=${sensorValue}
+    fi
 
     if [[ $current_line -ne $last_line ]]; then
         # is NOT last line
