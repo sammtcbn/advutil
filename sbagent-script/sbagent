@@ -106,7 +106,7 @@ do
         :
     fi
 
-done < ${sensorfile}
+done < ${SENSOR_FILE}
 }
 
 function Sensor_Array_show()
@@ -769,6 +769,13 @@ EOF
 # main
 # ------------------------------------------
 
+function post_action()
+{
+    if [ ! -z "${POST_SCRIPT}" ]; then
+        sh ${POST_SCRIPT}
+    fi
+}
+
 function clean_up ()
 {
     echo exit
@@ -795,6 +802,7 @@ while true; do
 	source ${SENSOR_UPDATE_SCRIPT}
 	sb_auto_report_data
     sb_live_report_data
+    post_action
     sleep ${REPORT_INTERVAL}
 done
 
