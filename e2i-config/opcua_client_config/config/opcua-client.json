@@ -1,0 +1,50 @@
+{
+    "OPCUA_Server": [
+        {
+            "NodeIDList": [
+                {
+                    "Type": "auto",
+                    "NodeId": "ns=3;s=AirConditioner_1.Humidity",
+                    "Name": "Humidity",
+                    "Interval": "5",
+                    "Min": "0",
+                    "Max": "100",
+                    "Unit": "%"
+                },
+                {
+                    "Type": "auto",
+                    "NodeId": "ns=3;s=AirConditioner_1.Temperature",
+                    "Name": "Temperature",
+                    "Interval": "5",
+                    "Min": "10",
+                    "Max": "30",
+                    "Unit": "celsius"
+                },
+                {
+                    "Type": "auto",
+                    "NodeId": "ns=3;s=AirConditioner_1.HumiditySetpoint",
+                    "Name": "Humidity-Setpoint",
+                    "Interval": "5",
+                    "Min": "0",
+                    "Max": "100",
+                    "Unit": "%"
+                },
+                {
+                    "Type": "auto",
+                    "NodeId": "ns=3;s=AirConditioner_1.TemperatureSetPoint",
+                    "Name": "Temperature-SetPoint",
+                    "Interval": "5",
+                    "Min": "0",
+                    "Max": "100",
+                    "Unit": "celsius"
+                }
+            ],
+            "endpointUrl": "opc.tcp://172.22.12.34:48010",
+            "userIdentity": {
+                "password": "secret",
+                "userName": "root"
+            },
+            "Name": "OPCUA-01"
+        }
+    ]
+}

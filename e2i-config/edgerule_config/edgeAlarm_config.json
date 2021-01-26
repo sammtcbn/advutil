@@ -1,0 +1,82 @@
+{
+    "EdgeAlarm": [
+        {
+            "Condition": {
+                "Lasts": 10000,
+                "min": "",
+                "max": "9",
+                "Period": 60000,
+                "Rule": "A >= 9",
+                "type": 1
+            },
+            "Input": "OPCUAClient/OPCUA-01/Node/Temperature",
+            "Trigger": {
+                "output": "Modbus-Master/Device/Sensor-Device/Sensor/FAN-Speed",
+                "Freq": "always",
+                "type": "v",
+                "value": "2500"
+            },
+            "enable": true,
+            "Alarm": {
+                "severity": 5,
+                "msg": "OPCUA- Temp is over 9 and set Modbus FAN Speed",
+                "subtype": "edgeRule",
+                "extMsg": {},
+                "bkmsg": ""
+            },
+            "n": "Tem>9"
+        },
+        {
+            "Condition": {
+                "Lasts": 5000,
+                "min": "99",
+                "max": "",
+                "Period": 80000,
+                "Rule": "A <= 99",
+                "type": 2
+            },
+            "Input": "Modbus-Master/Device/Sensor-Device/Sensor/Humidity",
+            "Trigger": {
+                "output": "Modbus-Master/Device/Sensor-Device/Sensor/Light-Switch",
+                "Freq": "always",
+                "type": "bv",
+                "value": true
+            },
+            "enable": true,
+            "Alarm": {
+                "severity": 4,
+                "msg": "Humidity < 99 and Turn-on Light",
+                "subtype": "New Type",
+                "extMsg": {},
+                "bkmsg": ""
+            },
+            "n": "Humidity<99"
+        },
+        {
+            "Condition": {
+                "Lasts": 5000,
+                "min": "10",
+                "max": "11",
+                "Period": 10000,
+                "Rule": "A >= 11 | A <= 10",
+                "type": 3
+            },
+            "Input": "OPCUAClient/OPCUA-01/Node/Temperature",
+            "Trigger": {
+                "output": "",
+                "Freq": "once",
+                "type": "",
+                "value": ""
+            },
+            "enable": true,
+            "Alarm": {
+                "severity": 3,
+                "msg": "Out side 10 ~ 11  action: None",
+                "subtype": "edgeRule",
+                "extMsg": {},
+                "bkmsg": ""
+            },
+            "n": "Temp-10-30"
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+	"ServerList":	[{
+			"Authorization":	"Basic YWRtaW46",
+			"ServerUrl":	"172.22.12.34:80",
+			"RetrieveSpecificTags":	true,
+			"ServerName":	"WASCADA",
+			"RetrieveInterval_ms":	1000,
+			"TagList":	[{
+					"Project":	"Project01",
+					"Type":	"auto",
+					"Min":	2000,
+					"Max":	3000,
+					"Unit":	"rpm",
+					"Name":	"FAN-Speed",
+					"Interval":	3
+				}],
+			"userIdentity":	{
+				"password":	"",
+				"userName":	""
+			},
+			"KeepSyncInterval_sec":	60
+		}]
+}

@@ -1,0 +1,93 @@
+metadata:
+  Description: Model Profile 01
+  UpdateData: '2021-1-4 13:48:22'
+  name: Model-01.yaml
+  version: 1.0.1
+  labels:
+    - MODBUS
+Sensor:
+  Temperature:
+    Params:
+      extendMode: false
+      AddressSpace: Input Register
+      Address: 1
+      Length: 1
+      DataFormat: ABCD
+      DataType: int16
+      Retry: 5
+      Delay: 100
+      Interval: 2000
+    Info:
+      min: 10
+      max: 30
+      u: celsius
+      v: -1
+      asm: r
+  Door-Open:
+    Params:
+      extendMode: false
+      AddressSpace: Discrete Input
+      Address: 0
+      Length: 1
+      DataFormat: ABCD
+      DataType: bit
+      Retry: 5
+      Delay: 100
+      Interval: 2000
+    Info:
+      min: 0
+      bv: 0
+      max: 1
+      u: Status
+      asm: r
+  FAN-Speed:
+    Params:
+      extendMode: false
+      AddressSpace: Holding Register
+      Address: 0
+      Length: 1
+      DataFormat: ABCD
+      DataType: int16
+      Retry: 5
+      Delay: 100
+      Interval: 2000
+    Info:
+      min: 2000
+      max: 3000
+      u: rpm
+      v: -1
+      asm: rw
+  Humidity:
+    Params:
+      extendMode: false
+      AddressSpace: Input Register
+      Address: 0
+      Length: 1
+      DataFormat: ABCD
+      DataType: int16
+      Retry: 5
+      Delay: 100
+      Interval: 2000
+    Info:
+      min: 0
+      max: 100
+      u: '%'
+      v: -1
+      asm: r
+  Light-Switch:
+    Params:
+      extendMode: false
+      AddressSpace: Coil
+      Address: 0
+      Length: 1
+      DataFormat: ABCD
+      DataType: bit
+      Retry: 5
+      Delay: 100
+      Interval: 2000
+    Info:
+      min: 0
+      bv: 0
+      max: 1
+      u: On-off
+      asm: rw

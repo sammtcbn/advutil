@@ -1,0 +1,24 @@
+metadata:
+  Description: Modbus TCP/RTU devices sample
+  UpdateData: '2020-01-08-14:25:30'
+  name: Modbus devices
+  labels:
+    - Modbus
+LinkInfo:
+  Net:
+    DevList:
+      - Sensor-Device
+    Info:
+      LinkAliveTime: 10
+      LinkCheckInterval: 5
+    Params:
+      Timeout: 3000
+      IP: 172.22.12.34
+      Port: 502
+      Driver: Modbus-TCP
+      ConnectType: Net
+DeviceInfo:
+  Sensor-Device:
+    Params:
+      Station: 1
+    Profile: Model-01.yaml

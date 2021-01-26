@@ -1,0 +1,13 @@
+metadata: 
+  name: "Cfg_EdgeSenseLink_SDK"
+  labels: ["EdgeSense", "Industry", "SDK"] 
+  Description: "Configuration for EdgeSense Link SDK"
+
+IPC_Type: MQTT
+
+MQTT:
+ Address: "127.0.0.1"
+ Port: 1883            # Port
+ KeepAlive: 10         # 10 second
+       
+  

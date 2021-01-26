@@ -1,0 +1,26 @@
+{
+    "Expression": [
+        {
+            "n": "OSensor1",
+            "Formula": "A+B",
+            "Description": "OPCUA temp and humi",
+            "IntervalSec": "3",
+            "InvalidValue": -1,
+            "Input": {
+                "A": "OPCUAClient/OPCUA-01/Node/Temperature",
+                "B": "OPCUAClient/OPCUA-01/Node/Humidity"
+            }
+        },
+        {
+            "n": "MSensor2",
+            "Formula": "(A+B)*2",
+            "Description": "Modbus Temp and Humi",
+            "IntervalSec": "3",
+            "InvalidValue": -1,
+            "Input": {
+                "A": "Modbus-Master/Device/Sensor-Device/Sensor/Temperature",
+                "B": "Modbus-Master/Device/Sensor-Device/Sensor/Humidity"
+            }
+        }
+    ]
+}
