@@ -15,21 +15,25 @@ function mqtt_pub()
     local topic=$1
     local payload=$2
 
-    if [ ! -z "${DEBUG_MQTT_MSG}" ]; then
-        if [ "${DEBUG_MQTT_MSG}" == "y" ] || [ "${DEBUG_MQTT_MSG}" == "Y" ]; then
+    if [ ! -z "${MQTT_ENABLE_DEBUG_MSG}" ]; then
+        if [ "${MQTT_ENABLE_DEBUG_MSG}" == "y" ] || [ "${MQTT_ENABLE_DEBUG_MSG}" == "Y" ]; then
             echo ${TOPIC}
             #echo ${payload}
             echo ${payload} | json_pp
         fi
     fi
 
-    if [ ! -z "${DEBUG_MQTT_NOT_PUB}" ]; then
-        if [ "${DEBUG_MQTT_NOT_PUB}" == "y" ] || [ "${DEBUG_MQTT_NOT_PUB}" == "Y" ]; then
+    if [ ! -z "${MQTT_NOT_PUB}" ]; then
+        if [ "${MQTT_NOT_PUB}" == "y" ] || [ "${MQTT_NOT_PUB}" == "Y" ]; then
             return 0
         fi
     fi
 
-    mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${payload}"
+    if [ ! -z "${MQTT_ENABLE_DEBUG_MSG}" ]; then
+        mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -d -m "${payload}"
+    else
+        mosquitto_pub -h ${MQTTIP} -t ${TOPIC} -m "${payload}"
+    fi
     if [ $? != 0 ]; then
         echo "Failed to mosquitto_pub"
         return 1
