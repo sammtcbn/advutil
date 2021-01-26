@@ -818,7 +818,8 @@ function post_action()
 
 function clean_up ()
 {
-    echo exit
+    sb_disconnect
+    echo bye
     exit
 }
 
