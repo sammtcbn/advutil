@@ -147,8 +147,7 @@ myclone https://gitlab.edgecenter.io/EIoT_Enabling_Team/FaceView/faceview_instal
 
 function f_personal()
 {
-myclone https://gitlab.edgecenter.io/Sam35.Lin/device-demo-plugin-node.js-sam.git
-myclone https://gitlab.edgecenter.io/Sam35.Lin/e2i-edge-packall.git
+    :
 }
 
 function f_github()
