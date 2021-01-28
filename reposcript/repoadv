@@ -152,9 +152,9 @@ function f_personal()
 
 function f_github()
 {
-myclone https://github.com/ADVANTECH-Corp/WiseSnail.git
+#myclone https://github.com/ADVANTECH-Corp/WiseSnail.git
 myclone https://github.com/ADVANTECH-Corp/agentlite.git
-myclone https://github.com/ADVANTECH-Corp/APIGateway.git
+#myclone https://github.com/ADVANTECH-Corp/APIGateway.git
 }
 
 function f_all()
