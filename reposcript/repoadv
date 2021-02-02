@@ -49,6 +49,7 @@ myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_Installer.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/RMM-EI-Agent_New_UI.git
 myclone https://gitlab.edgecenter.io/wise-agent-core/SouthboundAgent.git
 myclone https://gitlab.edgecenter.io/ei-paas-utility_repo/advtools.git
+myclone https://gitlab.edgecenter.io/ei-paas-plugin/CloudSync.git
 }
 
 function f_dss()
