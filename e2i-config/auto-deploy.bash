@@ -18,7 +18,7 @@ function upload () {
 function remote_exec () {
   local cmd=$@
   #echo ${cmd}
-  sshpass -p ${pw} ssh -t ${id}@${ip} -x ${cmd}
+  sshpass -p ${pw} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -t ${id}@${ip} -x ${cmd}
 }
 
 function remote_rm () {
